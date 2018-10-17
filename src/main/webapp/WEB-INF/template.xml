@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+
+<tiles-definitions>
+	<!-- ADMIN TEMPLATE -->	
+	<definition name="admin.template" template="/WEB-INF/templates/admin/template.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/templates/admin/header.jsp" />
+		<put-attribute name="left-bar"
+			value="/WEB-INF/templates/admin/left-bar.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer"
+			value="/WEB-INF/templates/admin/footer.jsp" />
+	</definition>
+
+    <definition name="admin.contact" extends="admin.template">
+        <put-attribute name="body" value="/WEB-INF/jsp/admin/contact/index.jsp" />
+    </definition>
+
+	<definition name="admin.category" extends="admin.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/category/index.jsp" />
+	</definition>
+	<!--END ADMIN TEMPLATE -->
+	<!-- ///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+	<!-- PUBLIC TEMPLATE -->
+	<definition name="public.template" template="/WEB-INF/templates/public/template.jsp">
+		<put-attribute name="header" value="/WEB-INF/templates/public/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/templates/public/footer.jsp" />
+	</definition>
+
+	<definition name="public.error.404" extends="public.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/public/404.jsp" />
+	</definition>
+	
+	<definition name="public.register" extends="public.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/public/register.jsp" />
+	</definition>
+	
+	<definition name="public.login" extends="public.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/public/login.jsp" />
+	</definition>
+	
+	<definition name="public.contact" extends="public.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/public/contact.jsp" />
+	</definition>
+	<definition name="public.home" extends="public.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/public/home.jsp" />
+	</definition>
+	<definition name="public.detail" extends="public.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/public/detail.jsp" />
+	</definition>
+	<definition name="public.products" extends="public.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/public/products.jsp" />
+	</definition>
+	<definition name="public.cart" extends="public.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/public/cart.jsp" />
+	</definition>
+
+	<definition name="public.checkout" template="/WEB-INF/templates/public/template.jsp">
+		<put-attribute name="header" value="" />
+		<put-attribute name="body" value="/WEB-INF/jsp/public/checkout.jsp" />
+		<put-attribute name="footer" value="" />
+	</definition>
+
+	<definition name="public.search" extends="public.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/public/search.jsp" />
+	</definition>
+</tiles-definitions>
