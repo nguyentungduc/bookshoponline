@@ -3,27 +3,22 @@
 <%@include file="/templates/taglib.jsp" %>
             <div class="container">
                 <!-- NIVOSLIDER -->
-
                 <div class="slider_wrap">
                     <div class="nivoSlider">
 
                         <a href="/collections/antiques">
                             <img src="js/slide1_image.jpg" alt="" title="#htmlcaption-1" />
                         </a>
-
                         <a href="/collections/blanks">
                             <img src="js/slide2_image.jpg" alt="" title="#htmlcaption-2" />
                         </a>
-
                         <a href="/collections/frontpage">
                             <img src="js/slide3_image.jpg" alt="" title="#htmlcaption-3" />
                         </a>
-
                     </div>
                 </div>
 
                 <div class="caption_hidden">
-
                     <div id="htmlcaption-1">
                         <a href="/collections/antiques">
                             <div class="caption__1 caption_wrap">
@@ -135,7 +130,6 @@
             <!-- MAIN CONTENT -->
             <div id="main" role="main">
                 <div class="container">
-
                     <div class="row sidebar_left sidebar_off">
 
                         <div class="column_center">

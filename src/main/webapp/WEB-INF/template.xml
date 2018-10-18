@@ -59,6 +59,9 @@
 	<definition name="public.cart" extends="public.template">
 		<put-attribute name="body" value="/WEB-INF/jsp/public/cart.jsp" />
 	</definition>
+	<definition name="public.category" extends="public.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/public/category.jsp" />
+	</definition>
 
 	<definition name="public.checkout" template="/WEB-INF/templates/public/template.jsp">
 		<put-attribute name="header" value="" />

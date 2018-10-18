@@ -16,6 +16,13 @@
                                     <li><a href="${pageContext.request.contextPath}/admincp/hoadon">Category</a></li>
                                 </ul>
                             </li>
+                            <li>
+                                <a href="javascript: void(0);" aria-expanded="true"><i class="fi-disc"></i><span class="menu-arrow"></span><span> User </span></a>
+                                <ul class="nav-second-level nav" aria-expanded="true">
+                                    <li><a href="${pageContext.request.contextPath}/admincp/user">User</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/admincp/contact">Contact</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                     <div class="clearfix"></div>

@@ -77,6 +77,13 @@
             display: flex !important;
             flex-direction: column !important;
         }
+        .tab-content>.tab-pane {
+            display: none
+        }
+
+        .tab-content>.active {
+            display: block
+        }
     </style>
     <script id="shopify-features" type="application/json">{"accessToken":"4fbc9ea753a7528dccd0ba88dd2d3a6e","betas":[],"domain":"theme133-books.myshopify.com","shopId":7521473,"smart_payment_buttons_url":"https:\/\/cdn.shopifycloud.com\/payment-sheet\/assets\/latest\/spb.js"}</script>
     <script>

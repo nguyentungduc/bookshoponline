@@ -90,27 +90,75 @@
                                         <div class="product_vendor">Vendor: <a href="/collections/vendors?q=BOOKS" title="BOOKS">BOOKS</a></div>
                                     </div>
 
-                                    <div id="product_description" class="rte" itemprop="description">
-                                        <h4>Description:</h4>
-                                        <p>Well, reading books as a hobby was always a noble, pleasant and very useful kind of activity. It gives knowledge, excerpts on the process of development of your personality. For a long period of time books were very rare and because of such confines only some 'esoteric' people could afford them. And you know what? Books always have some notes of mysticism. Yeah, they are worth our admiring.</p>
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link text-secondary" id="desc-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Description</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-secondary active show" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Reviews (2)</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-pane border border-top-0 p-3 active show" id="review" role="tabpanel" aria-labelledby="review-tab">
+                                        <div class="media mb-3">
+                                            <div class="mr-2">
+                                                <img class="rounded-circle border p-1" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Generic placeholder image">
+                                                <div class="rating">
+                                                    <i class="glyphicon glyphicon-star"></i>
+                                                    <i class="glyphicon glyphicon-star"></i>
+                                                    <i class="glyphicon glyphicon-star"></i>
+                                                    <i class="glyphicon glyphicon-star"></i>
+                                                    <i class="glyphicon glyphicon-star"></i>
+                                                </div>
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="font-weight-bold">John Thor</div>
+                                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
+                                            </div>
+                                        </div>
+                                        <div class="media mb-3">
+                                            <div class="mr-2">
+                                                <img class="rounded-circle border p-1" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Generic placeholder image">
+                                                <div class="rating">
+                                                    <i class="material-icons md-1">star</i>
+                                                    <i class="material-icons md-1">star</i>
+                                                    <i class="material-icons md-1">star</i>
+                                                    <i class="material-icons md-1">star</i>
+                                                    <i class="material-icons md-1">star_half</i>
+                                                </div>
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="font-weight-bold">Michael Lelep</div>
+                                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <h5><a data-toggle="collapse" href="#formReview" role="button" aria-expanded="true" aria-controls="formReview" class="">Add your review</a></h5>
+                                        <form class="mt-3 collapse show" id="formReview" style="">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="InputName" class="mb-0 font-weight-bold">Name</label>
+                                                    <input type="text" class="form-control" id="InputName" placeholder="Enter Name">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="InputEmail" class="mb-0 font-weight-bold">Email Address</label>
+                                                    <input type="email" class="form-control" id="InputEmail" placeholder="Enter Email">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="d-block mb-0 font-weight-bold">Rating</label>
+                                                <div class="rating-review rating" style="cursor: pointer;"><img alt="1" src="img/raty/star-on.png" title="bad">&nbsp;<img alt="2" src="img/raty/star-on.png" title="poor">&nbsp;<img alt="3" src="img/raty/star-on.png" title="regular">&nbsp;<img alt="4" src="img/raty/star-on.png" title="good">&nbsp;<img alt="5" src="img/raty/star-off.png" title="gorgeous"><input name="rating-review" type="hidden" value="4"></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="mb-0 font-weight-bold" for="InputReview">Your Review</label>
+                                                <textarea class="form-control" id="InputReview" rows="4" placeholder="Your Review Here"></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-theme btn-sm">Submit Review</button>
+                                        </form>
                                     </div>
-
-                                    <!-- AddThis Button BEGIN -->
-                                    <div class="addthis_toolbox addthis_default_style ">
-                                        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-                                        <a class="addthis_button_tweet"></a>
-                                        <a class="addthis_button_pinterest_pinit"></a>
-                                        <a class="addthis_counter addthis_pill_style"></a>
-                                    </div>
-                                    <!--<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>-->
-                                    <script async type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4d89903e1583a34e"></script>
-                                    <!-- AddThis Button END -->
 
                                 </div>
-
                                 <div class="row-fluid">
                                     <div class="span12">
-
                                     </div>
                                 </div>
                             </div>
@@ -483,96 +531,48 @@
                                     </div>
 
                                     <div class="product_price">
-
                                         <span class="money money-sale">$16</span>
-
                                         <span class="money compare-at-price">$22</span>
-
-                                        <!-- 
-    This is just a regular add product form. 
-    You should be able to add any valid input fields to it 
--->
                                         <form method="post" action="/cart/add">
-                                            <!-- We can leave this in, since the select comes later, 
-        so it will override if user picks something different. -->
-
                                             <input type="hidden" name="id" value="1050534057" />
-
-                                            <!-- START BUY -->
-
                                             <button class="btn btn-cart" type="submit"><i class="fa fa-shopping-cart"></i></button>
-
-                                            <!-- END BUY -->
                                         </form>
                                     </div>
                                 </div>
-
                             </div>
-
                             <div class="wow product">
-
                                 <div class="product_img">
                                     <a href="/collections/calendars/products/amusing-ourselves-to-death-public-discourse-in-the-age-of-show-business-by-neil-postman">
                                         <img src="//cdn.shopify.com/s/files/1/0752/1473/products/amusing_ourselves_to_death_public_discourse_in_the_age_of_show_business_by_neil_postman_1_medium.png?v=1422032897" alt="Amusing Ourselves to Death Public Discourse in the Age of Show Business by Neil Postman" />
                                     </a>
                                 </div>
-
                                 <div class="product_info">
                                     <div class="product_name">
                                         <a href="/collections/calendars/products/amusing-ourselves-to-death-public-discourse-in-the-age-of-show-business-by-neil-postman">Amusing Ourselves to Death ...</a>
                                     </div>
-
                                     <div class="product_price">
-
                                         <span class="money ">$20</span>
-
-                                        <!-- 
-    This is just a regular add product form. 
-    You should be able to add any valid input fields to it 
--->
                                         <form method="post" action="/cart/add">
-                                            <!-- We can leave this in, since the select comes later, 
-        so it will override if user picks something different. -->
-
                                             <input type="hidden" name="id" value="1050534177" />
-
-                                            <!-- START BUY -->
-
                                             <button class="btn btn-cart" type="submit"><i class="fa fa-shopping-cart"></i></button>
-
-                                            <!-- END BUY -->
                                         </form>
                                     </div>
                                 </div>
-
                             </div>
-
                             <div class="wow product">
-
                                 <div class="product_img">
                                     <a href="/collections/calendars/products/an-army-at-dawn-the-war-in-north-africa-1942-1943-volume-one-of-the-liberation-trilogy-by-rick-atkinson">
                                         <img src="//cdn.shopify.com/s/files/1/0752/1473/products/an_army_at_dawn_the_war_in_north_africa_19421943_volume_one_of_the_liberation_trilogy_by_rick_atkinson_1_medium.png?v=1422032906" alt="An Army at Dawn- The War in North Africa 1942-1943 Volume One of the Liberation Trilogy by Rick Atkinson" />
                                     </a>
                                 </div>
-
                                 <div class="product_info">
                                     <div class="product_name">
                                         <a href="/collections/calendars/products/an-army-at-dawn-the-war-in-north-africa-1942-1943-volume-one-of-the-liberation-trilogy-by-rick-atkinson">An Army at Dawn- The War in...</a>
                                     </div>
-
                                     <div class="product_price">
-
                                         <span class="money ">$10</span>
-                                        <!-- 
-    This is just a regular add product form. 
-    You should be able to add any valid input fields to it 
-                                        <form method="post" action="/cart/add">
-                                            <!-- We can leave this in, since the select comes later, 
-        so it will override if user picks something different. -->
                                             <input type="hidden" name="id" value="1050534353" />
-                                            <!-- START BUY -->
                                             <button class="btn btn-cart" type="submit"><i class="fa fa-shopping-cart"></i></button>
-                                            <!-- END BUY -->
                                         </form>
                                     </div>
                                 </div>

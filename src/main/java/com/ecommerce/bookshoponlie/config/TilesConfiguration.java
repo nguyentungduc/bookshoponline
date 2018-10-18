@@ -21,7 +21,6 @@ public class TilesConfiguration {
     public TilesViewResolver tilesViewResolver() {
         TilesViewResolver resolver = new TilesViewResolver();
         resolver.setViewClass(TilesView.class);
-
         return resolver;
     }
 }

@@ -10,4 +10,24 @@ public class PublicHomeController {
     public String showHome(ModelMap modelMap) {
         return "public.home";
     }
+    @GetMapping("/product")
+    public String showProduct(ModelMap modelMap) {
+        return "public.products";
+    }
+    @GetMapping("/checkout")
+    public String showCheckout(ModelMap modelMap) {
+        return "public.checkout";
+    }
+    @GetMapping("/detail")
+    public String showDetail(ModelMap modelMap) {
+        return "public.detail";
+    }
+    @GetMapping("/register")
+    public String showRegister(ModelMap modelMap) {
+        return "public.register";
+    }
+    @GetMapping("/category")
+    public String showCategory(ModelMap modelMap) {
+        return "public.category";
+    }
 }
