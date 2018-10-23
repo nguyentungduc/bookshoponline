@@ -23,6 +23,12 @@
 	<definition name="admin.category" extends="admin.template">
 		<put-attribute name="body" value="/WEB-INF/jsp/admin/category/index.jsp" />
 	</definition>
+	<definition name="admin.category.edit" extends="admin.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/category/edit.jsp" />
+	</definition>
+	<definition name="admin.category.add" extends="admin.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/category/add.jsp" />
+	</definition>
 	<!--END ADMIN TEMPLATE -->
 	<!-- ///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 	<!-- PUBLIC TEMPLATE -->

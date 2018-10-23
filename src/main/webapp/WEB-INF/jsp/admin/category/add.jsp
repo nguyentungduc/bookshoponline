@@ -30,12 +30,11 @@
                     <div class="card-box">
                         <div class="row">
                             <div class="col-md-12">
-                                <form enctype="multipart/form-data" action="${pageContext.request.contextPath}/admincp/category/edit" method="post" >
+                                <form enctype="multipart/form-data" action="${pageContext.request.contextPath}/admincp/category/add" method="post" >
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Name</label>
                                         <div class="col-md-10">
-                                            <input type="text"  name="name" class="form-control" value="${objCategory.name}">
-                                            <input type="hidden" name="id" class="form-control" value="${objCategory.id}">
+                                            <input type="text"  name="name" class="form-control" placeholder="Name Category">
                                         </div>
                                         <input type="submit" class="btn btn-primary icon-save" value="Submit">
                                     </div>

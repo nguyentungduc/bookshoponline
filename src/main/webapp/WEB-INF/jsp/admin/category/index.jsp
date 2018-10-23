@@ -49,6 +49,7 @@
                                 <tbody id="output">
                                 <c:forEach var="objCategory" items="${listCat}">
                                     <c:set var="urlDelete" value="${pageContext.request.contextPath}/admincp/category/delete/${objCategory.id}"></c:set>
+                                    <c:set var="urlEdit" value="${pageContext.request.contextPath}/admincp/category/${objCategory.id}"></c:set>
                                     <tr class="even gradeA">
                                         <td>
                                             <input name="cid[]" class="checkitem" type="checkbox" value="${objCategory.id}"/>
@@ -57,7 +58,7 @@
                                         <td>${objCategory.name}</td>
                                         <td class="center text-center no-sort">
                                             <a onclick="return confirmAction()" href="${urlDelete}" title="" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Xóa</a>
-                                            <a data-toggle="modal" data-target="#custom-width-modal" onclick="edit(${objCategory.id})" title="" class="btn btn-primary waves-effect waves-light"><span class="glyphicon glyphicon-eye-open"></span> Xem</a>
+                                            <a href="${urlEdit}" title="" class="btn btn-primary waves-effect waves-light"><span class="glyphicon glyphicon-eye-open"></span> Xem</a>
                                         </td>
                                     </tr>
                                 </c:forEach>

@@ -1,48 +1,48 @@
 package com.ecommerce.bookshoponlie.models;
 
 public class Category {
-    private static final long serialVersionUID = 1L;
-    private Integer id;
+    private int id;
     private String name;
     private String dateCreate;
     private String dateUpdate;
 
     public Category() {
+        this.id=0;
     }
 
-    public Category(Integer id, String name, String dateCreate, String dateUpdate) {
+    public Category(int id, String name, String dateCreate, String dateUpdate) {
         this.id = id;
         this.name = name;
         this.dateCreate = dateCreate;
         this.dateUpdate = dateUpdate;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getDateCreate() {
         return dateCreate;
     }
 
-    public void setDateCreate(String dateCreate) {
-        this.dateCreate = dateCreate;
-    }
-
     public String getDateUpdate() {
         return dateUpdate;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDateCreate(String dateCreate) {
+        this.dateCreate = dateCreate;
     }
 
     public void setDateUpdate(String dateUpdate) {

@@ -6,9 +6,10 @@ import org.springframework.http.HttpStatus;
 import java.util.List;
 
 public interface CategoriesService {
-    List<Category> getAllPerson(int page);
-    Category getById(Long id);
-    HttpStatus addPerson(Category category);
-    void updatePerson(Category category);
-    void deletePerson(Long id);
+    List<Category> getAllCategory(int page);
+    Category getById(int id);
+    boolean addCategory(Category category);
+    boolean updateCategory(Category category);
+    boolean deleteCategory(int id);
+    int getTotalPage();
 }
