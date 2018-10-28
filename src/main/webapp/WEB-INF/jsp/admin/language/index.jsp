@@ -7,13 +7,13 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="page-title-box">
-                        <h4 class="page-title">Publisher</h4>
+                        <h4 class="page-title">Language</h4>
                         <div class="clearfix"></div>
                     </div>
                 </div>
             </div>
             <!-- end row -->
-            <form action="${pageContext.request.contextPath}/admincp/publisher/deletes" method="POST">
+            <form action="${pageContext.request.contextPath}/admincp/language/deletes" method="POST">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="card-box table-responsive">
@@ -37,20 +37,16 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Adress</th>
-                                    <th>Phone</th>
                                     <th class="no-sort">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody id="output">
-                                <c:forEach var="publisher" items="${publishers}">
-                                    <c:set var="urlDelete" value="${pageContext.request.contextPath}/admincp/publisher/delete/${publisher.id}"></c:set>
-                                    <c:set var="urlEdit" value="${pageContext.request.contextPath}/admincp/publisher/${publisher.id}"></c:set>
+                                <c:forEach var="language" items="${languages}">
+                                    <c:set var="urlDelete" value="${pageContext.request.contextPath}/admincp/language/delete/${language.id}"></c:set>
+                                    <c:set var="urlEdit" value="${pageContext.request.contextPath}/admincp/language/${language.id}"></c:set>
                                     <tr class="even gradeA">
-                                        <td>${publisher.id}</td>
-                                        <td>${publisher.name}</td>
-                                        <td>${publisher.address}</td>
-                                        <td>${publisher.phone}</td>
+                                        <td>${language.id}</td>
+                                        <td>${language.name}</td>
                                         <td class="center text-center no-sort">
                                             <a onclick="return confirmAction()" href="${urlDelete}" title="" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Xóa</a>
                                             <a href="${urlEdit}" title="" class="btn btn-primary waves-effect waves-light"><span class="glyphicon glyphicon-eye-open"></span> Xem</a>

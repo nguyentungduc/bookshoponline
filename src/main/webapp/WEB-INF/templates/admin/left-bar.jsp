@@ -18,10 +18,24 @@
                                 </ul>
                             </li>
                             <li>
+                                <a href="javascript: void(0);" aria-expanded="true"><i class="fi-briefcase"></i> <span> Language </span> <span class="menu-arrow"></span></a>
+                                <ul class="nav-second-level nav" aria-expanded="true">
+                                    <li><a href="${pageContext.request.contextPath}/admincp/language">List</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/admincp/language/add">Add</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);" aria-expanded="true"><i class="fi-briefcase"></i> <span> Publisher </span> <span class="menu-arrow"></span></a>
+                                <ul class="nav-second-level nav" aria-expanded="true">
+                                    <li><a href="${pageContext.request.contextPath}/admincp/publisher">List</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/admincp/publisher/add">Add</a></li>
+                                </ul>
+                            </li>
+                            <li>
                                 <a href="javascript: void(0);" aria-expanded="true"><i class="fi-disc"></i><span class="menu-arrow"></span><span> User </span></a>
                                 <ul class="nav-second-level nav" aria-expanded="true">
                                     <li><a href="${pageContext.request.contextPath}/admincp/user">User</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/admincp/contact">Contact</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/admincp/Add">Add</a></li>
                                 </ul>
                             </li>
                         </ul>

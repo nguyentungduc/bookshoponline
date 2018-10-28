@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
 
-@Repository
+@Service
 public class CategoriesServiceImpl{
-    @Autowired
     RestTemplate restTemplate = new RestTemplate();
 
     final String ROOT_URI = "https://api-book-shop-online.herokuapp.com/api/categories";

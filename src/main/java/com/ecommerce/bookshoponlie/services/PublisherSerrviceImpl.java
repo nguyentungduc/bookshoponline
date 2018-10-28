@@ -2,79 +2,74 @@ package com.ecommerce.bookshoponlie.services;
 
 import com.ecommerce.bookshoponlie.models.Category;
 import com.ecommerce.bookshoponlie.models.Publisher;
-import com.ecommerce.bookshoponlie.services.interfaces.ObjectService;
+import org.apache.http.client.HttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
-import org.springframework.stereotype.Repository;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
 
-@Repository
-public class PublisherSerrviceImpl implements ObjectService {
-    final String ROOT_URI = "https://api-book-shop-online.herokuapp.com/api/categories";
-    @Autowired
+@Service
+public class PublisherSerrviceImpl{
+    final String ROOT_URI = "https://api-book-shop-online.herokuapp.com/api/";
     RestTemplate restTemplate = new RestTemplate();
 
-    @Override
-    public List<Publisher> getAllObject(int page) {
-        String URI = ROOT_URI + "/index?page="+page;
-        ResponseEntity<Publisher> response = restTemplate.getForEntity(URI, Publisher.class);
+    public List<Publisher> getAllPublisher(int page) {
+        String URI = ROOT_URI+"publishers/index?page="+page;
+        ResponseEntity<Publisher[]> response = restTemplate.getForEntity(URI,Publisher[].class);
         return Arrays.asList(response.getBody());
     }
+    public boolean addPublisher(Publisher publisher) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Accept", "application/json");
+        headers.add("Content-Type", "application/json");
+        RestTemplate restTemplate = new RestTemplate();
+        HttpEntity<Publisher> requestBody = new HttpEntity<>(publisher, headers);
+        String URL_CREATE_EMPLOYEE="https://api-book-shop-online.herokuapp.com/api/publishers";
+        ResponseEntity<Publisher> response = restTemplate.exchange(URL_CREATE_EMPLOYEE, HttpMethod.POST, requestBody, Publisher.class);
+        if (response != null) {
+            return true;
+        }
+        return false;
+    }
 
-    @Override
     public Publisher getById(int id) {
-        String URI = ROOT_URI + "/" + id;
+        String URI = ROOT_URI + "publishers/" + id;
         System.out.println("URL: " + URI);
         ResponseEntity<Publisher> response = restTemplate.getForEntity(URI, Publisher.class);
         return response.getBody();
     }
 
-    @Override
-    public boolean addObject(Objects object) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Accept", "application/json");
-        headers.add("Content-Type", "application/json");
-        RestTemplate restTemplate = new RestTemplate();
-        HttpEntity<Objects> requestBody = new HttpEntity<>(object, headers);
-        String URL_CREATE_EMPLOYEE="https://api-book-shop-online.herokuapp.com/api/categories";
-        ResponseEntity<Publisher> response = restTemplate.exchange(URL_CREATE_EMPLOYEE, HttpMethod.POST, requestBody, Publisher.class);
-        if (response != null) {
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean addObject(Publisher object) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Accept", "application/json");
-        headers.add("Content-Type", "application/json");
-        RestTemplate restTemplate = new RestTemplate();
-        HttpEntity<Publisher> requestBody = new HttpEntity<>(object, headers);
-        String URL_CREATE_EMPLOYEE="https://api-book-shop-online.herokuapp.com/api/categories";
-        ResponseEntity<Publisher> response = restTemplate.exchange(URL_CREATE_EMPLOYEE, HttpMethod.POST, requestBody, Publisher.class);
-        if (response != null) {
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean updateObject(Objects object) {
-        return false;
-    }
-
-    @Override
     public boolean deleteObject(int id) {
+        String URI = ROOT_URI + "publishers/" + id;
+        restTemplate.delete(URI);
+        try {
+            Publisher e = getById(id);
+            return false;
+        }catch (Exception e){
+            return true;
+        }
+    }
+    public boolean updatePublisher(Publisher publisher) {
+        HttpClient httpClient = HttpClientBuilder.create().build();
+        restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory(httpClient));
+        List<MediaType> acceptTypes = new ArrayList<MediaType>();
+        acceptTypes.add(MediaType.APPLICATION_JSON_UTF8);
+        HttpHeaders reqHeaders = new HttpHeaders();
+        reqHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+        reqHeaders.setAccept(acceptTypes);
+        String URI=ROOT_URI+"publishers/"+publisher.getId();
+        HttpEntity<Publisher> entity = new HttpEntity<>(publisher, reqHeaders);
+        ResponseEntity<Publisher> response = restTemplate.exchange(URI, HttpMethod.PATCH, entity, Publisher.class);
+        if (response != null) {
+            return true;
+        }
         return false;
     }
 
-    @Override
-    public int getTotalPage() {
-        return 0;
-    }
 }
 
 

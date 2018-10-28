@@ -9,6 +9,7 @@ public class Publisher {
     private String dateUpdate;
 
     public Publisher() {
+        this.id=0;
     }
 
     @Override
