@@ -1,31 +1,28 @@
 package com.ecommerce.bookshoponlie.services;
 
 import com.ecommerce.bookshoponlie.models.Category;
-import com.ecommerce.bookshoponlie.services.interfaces.CategoriesService;
+import org.apache.http.client.HttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Repository
-public class CategoriesServiceImpl implements CategoriesService {
+public class CategoriesServiceImpl{
     @Autowired
     RestTemplate restTemplate = new RestTemplate();
 
     final String ROOT_URI = "https://api-book-shop-online.herokuapp.com/api/categories";
 
-    public List<Category> getAllCategory(int page) {
+    public List<Category> getAllObject(int page) {
         String URI = ROOT_URI + "/index?page="+page;
         ResponseEntity<Category[]> response = restTemplate.getForEntity(URI,Category[].class);
         return Arrays.asList(response.getBody());
-    }
+}
 
     public Category getById(int id) {
         String URI = ROOT_URI + "/" + id;
@@ -34,7 +31,7 @@ public class CategoriesServiceImpl implements CategoriesService {
         return response.getBody();
     }
 
-    public boolean addCategory(Category category) {
+    public boolean addObject(Category category) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Accept", "application/json");
         headers.add("Content-Type", "application/json");
@@ -48,21 +45,25 @@ public class CategoriesServiceImpl implements CategoriesService {
         return false;
     }
 
-    public boolean updateCategory(Category category) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Accept", "application/json");
-        headers.add("Content-Type", "application/json");
+    public boolean updateObject(Category category) {
         RestTemplate restTemplate = new RestTemplate();
-        HttpEntity<Category> requestBody = new HttpEntity<>(category, headers);
-        String URL_CREATE_EMPLOYEE="https://api-book-shop-online.herokuapp.com/api/categories";
-        ResponseEntity<Category> response = restTemplate.exchange(URL_CREATE_EMPLOYEE, HttpMethod.POST, requestBody, Category.class);
+        HttpClient httpClient = HttpClientBuilder.create().build();
+        restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory(httpClient));
+        List<MediaType> acceptTypes = new ArrayList<MediaType>();
+        acceptTypes.add(MediaType.APPLICATION_JSON_UTF8);
+        HttpHeaders reqHeaders = new HttpHeaders();
+        reqHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+        reqHeaders.setAccept(acceptTypes);
+        String URL_CREATE_EMPLOYEE="https://api-book-shop-online.herokuapp.com/api/categories/"+category.getId();
+        HttpEntity<Category> entity = new HttpEntity<>(category, reqHeaders);
+        ResponseEntity<Category> response = restTemplate.exchange(URL_CREATE_EMPLOYEE, HttpMethod.PATCH, entity, Category.class);
         if (response != null) {
             return true;
         }
         return false;
     }
 
-    public boolean deleteCategory(int id) {
+    public boolean deleteObject(int id) {
         String URI = ROOT_URI + "/" + id;
         restTemplate.delete(URI);
         try {
@@ -75,8 +76,13 @@ public class CategoriesServiceImpl implements CategoriesService {
     public int getTotalPage(){
         String URI = ROOT_URI + "/index/pages";
         ResponseEntity response = restTemplate.getForEntity(URI, String.class);
-        System.out.println("response"+ response);
+        System.out.println("response"+ response.toString());
         int page=1;
-        return page;
+        try{
+            page=Integer.parseInt((String) response.getBody());
+            return page;
+        }catch (Exception e){
+            return 1;
+        }
     }
 }

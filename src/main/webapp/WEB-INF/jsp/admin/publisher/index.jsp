@@ -7,13 +7,13 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="page-title-box">
-                        <h4 class="page-title">Category</h4>
+                        <h4 class="page-title">Publisher</h4>
                         <div class="clearfix"></div>
                     </div>
                 </div>
             </div>
             <!-- end row -->
-            <form action="${pageContext.request.contextPath}/admincp/category/deletes" method="POST">
+            <form action="${pageContext.request.contextPath}/admincp/publisher/deletes" method="POST">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="card-box table-responsive">
@@ -41,12 +41,12 @@
                                 </tr>
                                 </thead>
                                 <tbody id="output">
-                                <c:forEach var="objCategory" items="${listCat}">
-                                    <c:set var="urlDelete" value="${pageContext.request.contextPath}/admincp/category/delete/${objCategory.id}"></c:set>
-                                    <c:set var="urlEdit" value="${pageContext.request.contextPath}/admincp/category/${objCategory.id}"></c:set>
+                                <c:forEach var="objPublisher" items="${listCat}">
+                                    <c:set var="urlDelete" value="${pageContext.request.contextPath}/admincp/publisher/delete/${objPublisher.id}"></c:set>
+                                    <c:set var="urlEdit" value="${pageContext.request.contextPath}/admincp/publisher/${objPublisher.id}"></c:set>
                                     <tr class="even gradeA">
-                                        <td>${objCategory.id}</td>
-                                        <td>${objCategory.name}</td>
+                                        <td>${objPublisher.id}</td>
+                                        <td>${objPublisher.name}</td>
                                         <td class="center text-center no-sort">
                                             <a onclick="return confirmAction()" href="${urlDelete}" title="" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Xóa</a>
                                             <a href="${urlEdit}" title="" class="btn btn-primary waves-effect waves-light"><span class="glyphicon glyphicon-eye-open"></span> Xem</a>
@@ -87,7 +87,7 @@
     }).on("page", function(event, /* page number here */ num){
         $("table.bangax").find("tbody").empty();
         $.ajax({
-            url: "${pageContext.request.contextPath}/admincp/category/ajax_page",
+            url: "${pageContext.request.contextPath}/admincp/objPublisher/ajax_page",
             type: 'POST',
             cache: false,
             data: {

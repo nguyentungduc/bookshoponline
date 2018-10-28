@@ -29,6 +29,16 @@
 	<definition name="admin.category.add" extends="admin.template">
 		<put-attribute name="body" value="/WEB-INF/jsp/admin/category/add.jsp" />
 	</definition>
+
+	<definition name="admin.publisher" extends="admin.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/publisher/index.jsp" />
+	</definition>
+	<definition name="admin.publisher.edit" extends="admin.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/publisher/edit.jsp" />
+	</definition>
+	<definition name="admin.publisher.add" extends="admin.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/publisher/add.jsp" />
+	</definition>
 	<!--END ADMIN TEMPLATE -->
 	<!-- ///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 	<!-- PUBLIC TEMPLATE -->
