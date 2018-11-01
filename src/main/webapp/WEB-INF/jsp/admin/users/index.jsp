@@ -7,13 +7,13 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="page-title-box">
-                        <h4 class="page-title">Category</h4>
+                        <h4 class="page-title">Users</h4>
                         <div class="clearfix"></div>
                     </div>
                 </div>
             </div>
             <!-- end row -->
-            <form action="${pageContext.request.contextPath}/admincp/category/deletes" method="POST">
+            <form action="${pageContext.request.contextPath}/admincp/user/deletes" method="POST">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="card-box table-responsive">
@@ -35,18 +35,29 @@
                             <table id="datatable" class="table table-striped table-bordered bangax">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th width="5%" ID</th>
                                     <th>Name</th>
+                                    <th width="10%">Status</th>
                                     <th width="10%">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody id="output">
-                                <c:forEach var="objCategory" items="${listCat}">
-                                    <c:set var="urlDelete" value="${pageContext.request.contextPath}/admincp/category/delete/${objCategory.id}"></c:set>
-                                    <c:set var="urlEdit" value="${pageContext.request.contextPath}/admincp/category/${objCategory.id}"></c:set>
+                                <c:forEach var="user" items="${users}">
+                                    <c:set var="urlDelete" value="${pageContext.request.contextPath}/admincp/user/delete/${user.id}"></c:set>
+                                    <c:set var="urlEdit" value="${pageContext.request.contextPath}/admincp/user/${user.id}"></c:set>
                                     <tr class="even gradeA">
-                                        <td style="width:5%">${objCategory.id}</td>
-                                        <td>${objCategory.name}</td>
+                                        <td>${user.id}</td>
+                                        <td>${user.name}</td>
+                                        <td class="center text-center"  style="width:5%" id="change-${user.id}">
+                                            <a style="color: #429c37;text-decoration: none;font-size: 25px;" href="javascript:void(0)" onclick="changeActive(${user.id}, ${user.status})" >
+                                                <c:if test="${user.status==1}">
+                                                    <span class="glyphicon glyphicon-ok-sign"></span>
+                                                </c:if>
+                                                <c:if test="${user.status==0}">
+                                                    <span class="glyphicon glyphicon-lock"></span>
+                                                </c:if>
+                                            </a>
+                                        </td>
                                         <td class="actions center text-center no-sort">
                                             <a style="padding: 5px;" href="${urlEdit}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
                                             <a onclick="return confirmAction()" href="${urlDelete}" style="padding: 5px;" href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
@@ -116,5 +127,24 @@
 <script type="text/javascript">
     function confirmAction() {
         return confirm('Bạn có chắc muốn xóa?');
+    }
+</script>
+<script type="text/javascript">
+    function changeActive(id, tt) {
+        $.ajax({
+            url: "${pageContext.request.contextPath}/admincp/user/active",
+            type: 'POST',
+            cache: false,
+            data: {
+                att: tt,
+                aid: id
+            },
+            success: function(data) {
+                $("#change-"+ id).html(data);
+            },
+            error: function() {
+                alert('Có lỗi');
+            }
+        });
     }
 </script>

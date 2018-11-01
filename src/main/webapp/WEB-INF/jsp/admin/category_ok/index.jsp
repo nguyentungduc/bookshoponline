@@ -35,9 +35,9 @@
                             <table id="datatable" class="table table-striped table-bordered bangax">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th style="width: 5%">ID</th>
                                     <th>Name</th>
-                                    <th width="10%">Action</th>
+                                    <th class="no-sort">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody id="output">
@@ -45,11 +45,11 @@
                                     <c:set var="urlDelete" value="${pageContext.request.contextPath}/admincp/category/delete/${objCategory.id}"></c:set>
                                     <c:set var="urlEdit" value="${pageContext.request.contextPath}/admincp/category/${objCategory.id}"></c:set>
                                     <tr class="even gradeA">
-                                        <td style="width:5%">${objCategory.id}</td>
+                                        <td>${objCategory.id}</td>
                                         <td>${objCategory.name}</td>
-                                        <td class="actions center text-center no-sort">
-                                            <a style="padding: 5px;" href="${urlEdit}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                            <a onclick="return confirmAction()" href="${urlDelete}" style="padding: 5px;" href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                                        <td class="center text-center no-sort">
+                                            <a onclick="return confirmAction()" href="${urlDelete}" title="" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Xóa</a>
+                                            <a href="${urlEdit}" title="" class="btn btn-primary waves-effect waves-light"><span class="glyphicon glyphicon-eye-open"></span> Xem</a>
                                         </td>
                                     </tr>
                                 </c:forEach>

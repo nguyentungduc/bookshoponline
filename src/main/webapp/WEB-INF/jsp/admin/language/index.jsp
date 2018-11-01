@@ -37,7 +37,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th class="no-sort">Action</th>
+                                    <th class="no-sort" width="10%">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody id="output">
@@ -45,11 +45,11 @@
                                     <c:set var="urlDelete" value="${pageContext.request.contextPath}/admincp/language/delete/${language.id}"></c:set>
                                     <c:set var="urlEdit" value="${pageContext.request.contextPath}/admincp/language/${language.id}"></c:set>
                                     <tr class="even gradeA">
-                                        <td>${language.id}</td>
+                                        <td style="width: 5%">${language.id}</td>
                                         <td>${language.name}</td>
-                                        <td class="center text-center no-sort">
-                                            <a onclick="return confirmAction()" href="${urlDelete}" title="" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Xóa</a>
-                                            <a href="${urlEdit}" title="" class="btn btn-primary waves-effect waves-light"><span class="glyphicon glyphicon-eye-open"></span> Xem</a>
+                                        <td class="actions center text-center no-sort">
+                                            <a style="padding: 5px;" href="${urlEdit}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                            <a onclick="return confirmAction()" href="${urlDelete}" style="padding: 5px;" href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>

@@ -35,7 +35,20 @@
                                 <a href="javascript: void(0);" aria-expanded="true"><i class="fi-disc"></i><span class="menu-arrow"></span><span> User </span></a>
                                 <ul class="nav-second-level nav" aria-expanded="true">
                                     <li><a href="${pageContext.request.contextPath}/admincp/user">User</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/admincp/Add">Add</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/admincp/user/add">Add</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);" aria-expanded="true"><i class="fi-disc"></i><span class="menu-arrow"></span><span> Book </span></a>
+                                <ul class="nav-second-level nav" aria-expanded="true">
+                                    <li><a href="${pageContext.request.contextPath}/admincp/book">List Boook</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/admincp/book/add">Add</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);" aria-expanded="true"><i class="fi-disc"></i><span class="menu-arrow"></span><span> Orders </span></a>
+                                <ul class="nav-second-level nav" aria-expanded="true">
+                                    <li><a href="${pageContext.request.contextPath}/admincp/order">List Orders</a></li>
                                 </ul>
                             </li>
                         </ul>

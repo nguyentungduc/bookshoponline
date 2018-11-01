@@ -79,11 +79,11 @@ public class CategoryAdminController {
         String data="";
         List<Category> listCategory = objCategoriesService.getAllObject(apage);
         for (Category obj : listCategory) {
-            data+="<tr><td style='width:5%'>"+obj.getId()+"</td>"
+            data+="<tr><td style='width:5%' actions center text-center no-sort>"+obj.getId()+"</td>"
                     +"<td>"+obj.getName()+"</td>"
                     +"<td class='actions'>"
-                    +"<a href='"+request.getContextPath()+"/admincp/category/"+obj.getId()+"' title='' class='btn btn-primary''><span class='glyphicon glyphicon-pencil'></span> Sửa</a>"
-                    +"<a href='"+request.getContextPath()+"/admincp/category/delete/"+obj.getId()+"' title='' class='btn btn-danger' onclick='return confirmAction()'><span class='glyphicon glyphicon-trash' ></span> Xóa</a>"
+                    +"<a href='"+request.getContextPath()+"/admincp/category/"+obj.getId()+"' title='' style='padding: 5px;' class='on-default edit-row''><i class='fa fa-pencil'></i></a>"
+                    +"<a href='"+request.getContextPath()+"/admincp/category/delete/"+obj.getId()+"' title='' style='padding: 5px;' class='on-default remove-row' onclick='return confirmAction()'><i class='fa fa-trash-o'></i></a>"
                     +"</td></tr>";
         }
         return data;

@@ -47,13 +47,13 @@
                                     <c:set var="urlDelete" value="${pageContext.request.contextPath}/admincp/publisher/delete/${publisher.id}"></c:set>
                                     <c:set var="urlEdit" value="${pageContext.request.contextPath}/admincp/publisher/${publisher.id}"></c:set>
                                     <tr class="even gradeA">
-                                        <td>${publisher.id}</td>
+                                        <td style="width:5%">${publisher.id}</td>
                                         <td>${publisher.name}</td>
                                         <td>${publisher.address}</td>
                                         <td>${publisher.phone}</td>
                                         <td class="center text-center no-sort">
-                                            <a onclick="return confirmAction()" href="${urlDelete}" title="" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Xóa</a>
-                                            <a href="${urlEdit}" title="" class="btn btn-primary waves-effect waves-light"><span class="glyphicon glyphicon-eye-open"></span> Xem</a>
+                                            <a style="padding: 5px;" href="${urlEdit}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                            <a onclick="return confirmAction()" href="${urlDelete}" style="padding: 5px;" href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>

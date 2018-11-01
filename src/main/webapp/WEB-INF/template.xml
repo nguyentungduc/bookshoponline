@@ -49,6 +49,16 @@
 	<definition name="admin.language.add" extends="admin.template">
 		<put-attribute name="body" value="/WEB-INF/jsp/admin/language/add.jsp" />
 	</definition>
+
+	<definition name="admin.user" extends="admin.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/users/index.jsp" />
+	</definition>
+	<definition name="admin.user.edit" extends="admin.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/users/edit.jsp" />
+	</definition>
+	<definition name="admin.user.add" extends="admin.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/users/add.jsp" />
+	</definition>
 	<!--END ADMIN TEMPLATE -->
 	<!-- ///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 	<!-- PUBLIC TEMPLATE -->
