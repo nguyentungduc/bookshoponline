@@ -59,6 +59,30 @@
 	<definition name="admin.user.add" extends="admin.template">
 		<put-attribute name="body" value="/WEB-INF/jsp/admin/users/add.jsp" />
 	</definition>
+
+	<definition name="admin.book" extends="admin.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/book/index.jsp" />
+	</definition>
+	<definition name="admin.book.edit" extends="admin.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/book/edit.jsp" />
+	</definition>
+	<definition name="admin.book.add" extends="admin.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/book/add.jsp" />
+	</definition>
+
+	<definition name="admin.supplier" extends="admin.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/supplier/index.jsp" />
+	</definition>
+	<definition name="admin.supplier.edit" extends="admin.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/supplier/edit.jsp" />
+	</definition>
+	<definition name="admin.supplier.add" extends="admin.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/supplier/add.jsp" />
+	</definition>
+
+	<definition name="admin.dashboard" extends="admin.template">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/dashboard/add.jsp" />
+	</definition>
 	<!--END ADMIN TEMPLATE -->
 	<!-- ///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 	<!-- PUBLIC TEMPLATE -->

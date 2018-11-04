@@ -10,13 +10,13 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="page-title-box">
-                        <h4 class="page-title">Category</h4>
+                        <h4 class="page-title">Book</h4>
                         <ol class="breadcrumb p-0 m-0">
                             <li>
                                 <a href="#">Category</a>
                             </li>
                             <li>
-                                <a href="#">Edit</a>
+                                <a href="#">Add</a>
                             </li>
                         </ol>
                         <div class="clearfix"></div>
@@ -31,13 +31,14 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <form enctype="multipart/form-data" action="${pageContext.request.contextPath}/admincp/category/edit" method="post" >
-                                    <div class="form-group">
-                                        <label class="col-md-2 control-label">Name</label>
-                                        <div class="col-md-10">
-                                            <input type="text"  name="name" class="form-control" value="${objCategory.name}">
-                                            <input type="hidden" name="id" class="form-control" value="${objCategory.id}">
+                                    <div class="card-box">
+                                        <h4 class="m-t-0 header-title"><b>Category</b></h4>
+                                        <div class="form-group">
+                                            <label for="name">Name</label>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" value="${objCategory.name}">
                                         </div>
-                                        <input type="submit" class="btn btn-primary icon-save" value="Submit">
+                                        <input type="hidden" name="id"  value="${objCategory.id}">
+                                        <input type="submit" class="btn btn-primary icon-save" value="Update">
                                     </div>
                                 </form>
                             </div>
@@ -52,5 +53,4 @@
     <footer class="footer text-right">
         2016 - 2017 © Codefox. - Coderthemes.com
     </footer>
-
 </div>

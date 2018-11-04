@@ -64,4 +64,15 @@ public class UserAdminController {
         modelMap.addAttribute("user",user);
         return "admin.user.edit";
     }
+    @RequestMapping(value = "user/edit", method = RequestMethod.POST, produces="application/json")
+    public String edit(@ModelAttribute("user") User user, ModelMap modelMap, RedirectAttributes ra) {
+        try {
+            userService.updateUser(user);
+            ra.addFlashAttribute("msg", "Sửa thành công !");
+        }catch (Exception e){
+            ra.addFlashAttribute("msg", "Sửa thất bại !");
+            e.printStackTrace();
+        }
+        return "redirect:/admincp/user";
+    }
 }

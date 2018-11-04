@@ -58,22 +58,6 @@ public class UserServiceImpl {
         ResponseEntity<User> response = restTemplate.getForEntity(URI, User.class);
         return response.getBody();
     }
-    public boolean updatePublisher(User user) {
-        HttpClient httpClient = HttpClientBuilder.create().build();
-        restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory(httpClient));
-        List<MediaType> acceptTypes = new ArrayList<MediaType>();
-        acceptTypes.add(MediaType.APPLICATION_JSON_UTF8);
-        HttpHeaders reqHeaders = new HttpHeaders();
-        reqHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-        reqHeaders.setAccept(acceptTypes);
-        String URI=ROOT_URI+"groups/"+user.getId();
-        HttpEntity<User> entity = new HttpEntity<>(user, reqHeaders);
-        ResponseEntity<User> response = restTemplate.exchange(URI, HttpMethod.PATCH, entity, User.class);
-        if (response != null) {
-            return true;
-        }
-        return false;
-    }
 }
 
 

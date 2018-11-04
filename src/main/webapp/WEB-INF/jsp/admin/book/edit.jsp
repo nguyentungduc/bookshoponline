@@ -10,10 +10,10 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="page-title-box">
-                        <h4 class="page-title">User</h4>
+                        <h4 class="page-title">Book</h4>
                         <ol class="breadcrumb p-0 m-0">
                             <li>
-                                <a href="#">User</a>
+                                <a href="#">Book</a>
                             </li>
                             <li>
                                 <a href="#">Add</a>
@@ -30,15 +30,14 @@
                     <div class="card-box">
                         <div class="row">
                             <div class="col-md-12">
-                                <form enctype="multipart/form-data" action="${pageContext.request.contextPath}/admincp/user/edit" method="post" >
+                                <form enctype="multipart/form-data" action="${pageContext.request.contextPath}/admincp/book/edit" method="post" >
                                     <div class="card-box">
-                                        <h4 class="m-t-0 header-title"><b>User</b></h4>
+                                        <h4 class="m-t-0 header-title"><b>Book</b></h4>
                                         <div class="form-group">
                                             <label for="name">Name</label>
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" value="${user.name}">
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" value="${book.name}">
                                         </div>
-                                        <input type="hidden" name="status"  value="${user.status}">
-                                        <input type="hidden" name="id"  value="${user.id}">
+                                        <input type="hidden" name="id"  value="${book.id}">
                                         <input type="submit" class="btn btn-primary icon-save" value="Update">
                                     </div>
                                 </form>
@@ -54,5 +53,4 @@
     <footer class="footer text-right">
         2016 - 2017 © Codefox. - Coderthemes.com
     </footer>
-
 </div>

@@ -8,7 +8,7 @@
                         <ul class="metisMenu nav" id="side-menu">
                             <li class="menu-title">Admin manager</li>
                             <li>
-                                <a href="${pageContext.request.contextPath}/admincp"><i class="fi-air-play"></i><span class="badge badge-success pull-right">1</span> <span> Dashboard </span> </a>
+                                <a href="${pageContext.request.contextPath}/admincp"><i class="fi-air-play"></i><span class="badge badge-success"></span> <span> Dashboard </span> </a>
                             </li>
                             <li>
                                 <a href="javascript: void(0);" aria-expanded="true"><i class="fi-briefcase"></i> <span> Category </span> <span class="menu-arrow"></span></a>
@@ -49,6 +49,13 @@
                                 <a href="javascript: void(0);" aria-expanded="true"><i class="fi-disc"></i><span class="menu-arrow"></span><span> Orders </span></a>
                                 <ul class="nav-second-level nav" aria-expanded="true">
                                     <li><a href="${pageContext.request.contextPath}/admincp/order">List Orders</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);" aria-expanded="true"><i class="fi-disc"></i><span class="menu-arrow"></span><span> Pubblier </span></a>
+                                <ul class="nav-second-level nav" aria-expanded="true">
+                                    <li><a href="${pageContext.request.contextPath}/admincp/supplier">List Pubblier</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/admincp/supplier/add"> Add </a></li>
                                 </ul>
                             </li>
                         </ul>
