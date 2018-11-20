@@ -8,15 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import javax.servlet.http.HttpServletRequest;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/admincp/")
@@ -51,18 +46,9 @@ public class BookAdminController {
         return "redirect:/admincp/book";
     }
     @RequestMapping(value ="book/add", method = RequestMethod.POST, produces="application/json")
-    public String add(@RequestParam("file") MultipartFile file,MultipartHttpServletRequest request,@RequestParam("category_id") Integer category_id, @RequestParam("language_id") Integer language_id, @RequestParam("publisher_id") Integer publisher_id , @ModelAttribute("book")Book book, @ModelAttribute("detail") BookDetail detail, RedirectAttributes ra) {
-        System.out.println("file: "+file.isEmpty());
-        Iterator<String> itr = request.getFileNames();
-        MultipartFile files = request.getFile(itr.next());
-        System.out.println(files.isEmpty());
-        System.out.println(category_id+","+language_id+","+publisher_id);
-        System.out.println(category_id+","+language_id+","+publisher_id);
+    public String add(@RequestParam("file") MultipartFile file, @RequestParam("files") MultipartFile[] files,@RequestParam("category_id") Integer category_id, @RequestParam("language_id") Integer language_id, @RequestParam("publisher_id") Integer publisher_id , @ModelAttribute("book")Book book, @ModelAttribute("detail") BookDetail detail, RedirectAttributes ra) {
         List<Category> list = new ArrayList<Category>();
         Category objCategory = new Category(category_id);
-        System.out.println(
-                objCategory.toString()
-        );
         Language objLanguage = new Language(language_id);
         list.add(objCategory);
         detail.setLanguage(objLanguage);
@@ -70,7 +56,7 @@ public class BookAdminController {
         book.setPublisher(new Publisher(publisher_id));
         book.setCategories(list);
         System.out.println(book.toString());
-        if(bookSerrvice.addBook(book,files,file)) {
+        if(bookSerrvice.addBook(book, files, file)) {
             ra.addFlashAttribute("msg", "Thêm thành công !");
         }else{
             ra.addFlashAttribute("msg", "Thêm thất bại !");
