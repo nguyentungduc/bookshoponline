@@ -18,7 +18,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript: void(0);" aria-expanded="true"><i class="fi-briefcase"></i> <span> Language </span> <span class="menu-arrow"></span></a>
+                                <a href="javascript: void(0);" aria-expanded="true"><i class="dripicons-graduation"></i> <span> Language </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level nav" aria-expanded="true">
                                     <li><a href="${pageContext.request.contextPath}/admincp/language">List</a></li>
                                     <li><a href="${pageContext.request.contextPath}/admincp/language/add">Add</a></li>
@@ -32,27 +32,27 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript: void(0);" aria-expanded="true"><i class="fi-disc"></i><span class="menu-arrow"></span><span> User </span></a>
+                                <a href="javascript: void(0);" aria-expanded="true"><i class="dripicons-user"></i><span class="menu-arrow"></span><span> User </span></a>
                                 <ul class="nav-second-level nav" aria-expanded="true">
                                     <li><a href="${pageContext.request.contextPath}/admincp/user">User</a></li>
                                     <li><a href="${pageContext.request.contextPath}/admincp/user/add">Add</a></li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript: void(0);" aria-expanded="true"><i class="fi-disc"></i><span class="menu-arrow"></span><span> Book </span></a>
+                                <a href="javascript: void(0);" aria-expanded="true"><i class="dripicons-blog"></i><span class="menu-arrow"></span><span> Book </span></a>
                                 <ul class="nav-second-level nav" aria-expanded="true">
                                     <li><a href="${pageContext.request.contextPath}/admincp/book">List Boook</a></li>
                                     <li><a href="${pageContext.request.contextPath}/admincp/book/add">Add</a></li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript: void(0);" aria-expanded="true"><i class="fi-disc"></i><span class="menu-arrow"></span><span> Orders </span></a>
+                                <a href="javascript: void(0);" aria-expanded="true"><i class="dripicons-weight"></i><span class="menu-arrow"></span><span> Orders </span></a>
                                 <ul class="nav-second-level nav" aria-expanded="true">
                                     <li><a href="${pageContext.request.contextPath}/admincp/order">List Orders</a></li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript: void(0);" aria-expanded="true"><i class="fi-disc"></i><span class="menu-arrow"></span><span> Pubblier </span></a>
+                                <a href="javascript: void(0);" aria-expanded="true"><i class="dripicons-volume-low"></i><span class="menu-arrow"></span><span> Pubblier </span></a>
                                 <ul class="nav-second-level nav" aria-expanded="true">
                                     <li><a href="${pageContext.request.contextPath}/admincp/supplier">List Pubblier</a></li>
                                     <li><a href="${pageContext.request.contextPath}/admincp/supplier/add"> Add </a></li>

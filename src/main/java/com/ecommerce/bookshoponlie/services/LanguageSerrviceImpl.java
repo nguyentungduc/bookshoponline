@@ -70,6 +70,11 @@ public class LanguageSerrviceImpl {
         return false;
     }
 
+    public List<Language> getLanguageAll() {
+        String URI = ROOT_URI+"languages/index";
+        ResponseEntity<Language[]> response = restTemplate.getForEntity(URI,Language[].class);
+        return Arrays.asList(response.getBody());
+    }
 }
 
 

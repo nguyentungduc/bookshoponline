@@ -71,6 +71,11 @@ public class PublisherSerrviceImpl{
         return false;
     }
 
+    public List<Publisher> getAllpublisher() {
+        String URI = ROOT_URI+"publishers/index";
+        ResponseEntity<Publisher[]> response = restTemplate.getForEntity(URI,Publisher[].class);
+        return Arrays.asList(response.getBody());
+    }
 }
 
 

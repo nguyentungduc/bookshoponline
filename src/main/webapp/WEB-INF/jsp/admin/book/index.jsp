@@ -91,7 +91,7 @@
     }).on("page", function(event, /* page number here */ num){
         $("table.bangax").find("tbody").empty();
         $.ajax({
-            url: "${pageContext.request.contextPath}/admincp/category/ajax_page",
+            url: "${pageContext.request.contextPath}/admincp/book/ajax_page",
             type: 'POST',
             cache: false,
             data: {

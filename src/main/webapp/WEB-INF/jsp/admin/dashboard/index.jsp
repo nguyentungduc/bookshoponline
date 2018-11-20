@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/templates/taglib.jsp" %>
+<!-- ============================================================== -->
+<!-- Start right Content here -->
+<!-- ============================================================== -->
 <div class="content-page">
     <!-- Start content -->
     <div class="content">
@@ -7,85 +10,71 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="page-title-box">
-                        <h4 class="page-title">Supplier</h4>
+                        <h4 class="page-title">Dashboard</h4>
+                        <ol class="breadcrumb p-0 m-0">
+                            <li>
+                                <a href="#">Dashboard</a>
+                            </li>
+                        </ol>
                         <div class="clearfix"></div>
                     </div>
                 </div>
             </div>
             <!-- end row -->
-            <form action="${pageContext.request.contextPath}/admincp/supplier/deletes" method="POST">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="card-box table-responsive">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                </div>
-                                <c:if test="${msg!=null}">
-                                    <div class="col-sm-6">
-                                        <div class="alert alert-success alert-dismissible fade in" role="alert">
-                                            <button type="button" class="close" data-dismiss="alert"
-                                                    aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                            <strong>${msg}</strong>
-                                        </div>
-                                    </div>
-                                </c:if>
-                            </div>
-                            <table id="datatable" class="table table-striped table-bordered bangax">
-                                <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Adress</th>
-                                    <th>Phone</th>
-                                    <th>representative</th>
-                                    <th class="no-sort">Action</th>
-                                </tr>
-                                </thead>
-                                <tbody id="output">
-                                <c:forEach var="supplier" items="${suppliers}">
-                                    <c:set var="urlDelete" value="${pageContext.request.contextPath}/admincp/supplier/delete/${supplier.id}"></c:set>
-                                    <c:set var="urlEdit" value="${pageContext.request.contextPath}/admincp/supplier/${supplier.id}"></c:set>
-                                    <tr class="even gradeA">
-                                        <td style="width:5%">${supplier.id}</td>
-                                        <td>${supplier.name}</td>
-                                        <td>${supplier.address}</td>
-                                        <td>${supplier.phone}</td>
-                                        <td>${supplier.representative}</td>
-                                        <td class="center text-center no-sort">
-                                            <a style="padding: 5px;" href="${urlEdit}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                            <a onclick="return confirmAction()" href="${urlDelete}" style="padding: 5px;" href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
-                            <%--<div class="col-md-4 pull-right">--%>
-                                <%--<div id="page-selection"></div>--%>
-                                <%--<input type="hidden" value="${totalPage}" id="totalPage">--%>
-                            <%--</div>--%>
-                        </div>
-                </div> <!-- container -->
-            </div> <!-- content -->
-        <footer class="footer text-right">
-            2016 - 2017 © Nguyễn Tùng Đức. - mystore.com
-        </footer>
-    </div>
-</div>
 
-<script type="text/javascript">
-    $('#datatable').dataTable( {
-        "info":     false,
-        "paging":   false,
-        "columnDefs": [ {
-            "targets": 'no-sort',
-            "orderable": false,
-        } ]
-    } );
-</script>
-<script type="text/javascript">
-    function confirmAction() {
-        return confirm('Bạn có chắc muốn xóa?');
-    }
-</script>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="card-box widget-box-two widget-two-inverse">
+                        <i class="dripicons-broadcast widget-two-icon"></i>
+                        <div class="wigdet-two-content">
+                            <p class="m-0 text-uppercase text-white font-600 text-overflow" title="Statistics">Total Language</p>
+                            <h2 class="text-white"><span data-plugin="counterup">${totalLanguage}</span><small></small></h2>
+                            <p class="text-white m-0"><b><a href="${pageContext.request.contextPath}/admincp/language">View detail</a></b></p>
+                        </div>
+                    </div>
+                </div><!-- end col -->
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card-box widget-box-two widget-two-info">
+                        <i class="dripicons-basket widget-two-icon"></i>
+                        <div class="wigdet-two-content">
+                            <p class="m-0 text-white text-uppercase font-600 text-overflow" title="Total language">Total book</p>
+                            <h2 class="text-white"><span data-plugin="counterup">${totalBook}</span> <small></small></h2>
+                            <p class="text-white m-0"><b><a href="${pageContext.request.contextPath}/admincp/book">View detail</a></b></p>
+                        </div>
+                    </div>
+                </div><!-- end col -->
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card-box widget-box-two widget-two-purple">
+                        <i class="dripicons-briefcase widget-two-icon"></i>
+                        <div class="wigdet-two-content">
+                            <p class="m-0 text-uppercase text-white font-600 text-overflow" title="User This Month">Total Publisher</p>
+                            <h2 class="text-white"><span data-plugin="counterup">${totalPublisher}</span> <small></small></h2>
+                            <p class="text-white m-0"><b><a href="${pageContext.request.contextPath}/admincp/publisher">View detail</a></b></p>
+                        </div>
+                    </div>
+                </div><!-- end col -->
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card-box widget-box-two widget-two-custom">
+                        <i class="dripicons-user-group widget-two-icon"></i>
+                        <div class="wigdet-two-content">
+                            <p class="m-0 text-white text-uppercase font-600 text-overflow" title="Total Uer">Total User</p>
+                            <h2 class="text-white"><span data-plugin="counterup">${totalUser}</span> <small></small></h2>
+                            <p class="text-white m-0"><b><a href="${pageContext.request.contextPath}/admincp/user">View detail</a></b></p>
+                        </div>
+                    </div>
+                </div><!-- end col -->
+
+            </div>
+            <!-- end row -->
+        </div> <!-- container -->
+
+    </div> <!-- content -->
+
+    <footer class="footer text-right">
+        2016 - 2017 © Codefox. - Coderthemes.com
+    </footer>
+
+</div>.

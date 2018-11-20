@@ -11,6 +11,9 @@ public class Publisher {
     public Publisher() {
         this.id=0;
     }
+    public Publisher(int id) {
+        this.id=id;
+    }
 
     @Override
     public String toString() {

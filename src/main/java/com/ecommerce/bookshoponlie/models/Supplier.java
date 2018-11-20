@@ -11,7 +11,9 @@ public class Supplier {
 
     public Supplier() {
     }
-
+    public Supplier(int id) {
+        this.id=id;
+    }
     public Supplier(int id, String name, String address, String phone, String dateCreate, String dateUpdate, String representative) {
         this.id = id;
         this.name = name;

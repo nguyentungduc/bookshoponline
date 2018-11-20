@@ -6,7 +6,7 @@
 <!-- Mirrored from coderthemes.com/codefox/light_1/page-404-alt.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 27 Dec 2017 04:22:56 GMT -->
 <head>
         <meta charset="utf-8" />
-        <title>Codefox - Responsive Admin Dashboard Template</title>
+        <title>Book Shop</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -103,7 +103,7 @@
                     <!-- Image logo -->
                     <a href="index.html" class="logo">
                         <span>
-                            <img src="${pageContext.request.contextPath}/templates/admin/assets/images/logo.png" alt="" height="20">
+                            <img src="${pageContext.request.contextPath}/templates/admin/assets/images/logo.png" alt="">
                         </span>
                         <i>
                             <img src="${pageContext.request.contextPath}/templates/admin/assets/images/logo_sm.png" alt="" height="28">

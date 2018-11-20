@@ -1,23 +1,48 @@
 package com.ecommerce.bookshoponlie.models;
 
 public class Category {
-    private int id;
+    private Integer id;
     private String name;
     private String dateCreate;
     private String dateUpdate;
 
-    public Category() {
-        this.id=0;
-    }
-
-    public Category(int id, String name, String dateCreate, String dateUpdate) {
+    public Category(Integer id, String name, String dateCreate, String dateUpdate) {
         this.id = id;
         this.name = name;
         this.dateCreate = dateCreate;
         this.dateUpdate = dateUpdate;
     }
 
-    public int getId() {
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", dateCreate='" + dateCreate + '\'' +
+                ", dateUpdate='" + dateUpdate + '\'' +
+                '}';
+    }
+
+    public Category() {
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDateCreate(String dateCreate) {
+        this.dateCreate = dateCreate;
+    }
+
+    public void setDateUpdate(String dateUpdate) {
+        this.dateUpdate = dateUpdate;
+    }
+
+    public Integer getId() {
         return id;
     }
 
@@ -33,19 +58,7 @@ public class Category {
         return dateUpdate;
     }
 
-    public void setId(int id) {
+    public Category(Integer id) {
         this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDateCreate(String dateCreate) {
-        this.dateCreate = dateCreate;
-    }
-
-    public void setDateUpdate(String dateUpdate) {
-        this.dateUpdate = dateUpdate;
     }
 }

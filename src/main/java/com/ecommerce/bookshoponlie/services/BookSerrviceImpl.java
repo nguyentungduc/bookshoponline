@@ -1,12 +1,14 @@
 package com.ecommerce.bookshoponlie.services;
 
-import com.ecommerce.bookshoponlie.models.Book;
-import com.ecommerce.bookshoponlie.models.Publisher;
+import com.ecommerce.bookshoponlie.models.*;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.*;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -23,19 +25,39 @@ public class BookSerrviceImpl {
         ResponseEntity<Book[]> response = restTemplate.getForEntity(URI,Book[].class);
         return Arrays.asList(response.getBody());
     }
-//    public boolean addPublisher(Publisher publisher) {
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.add("Accept", "application/json");
-//        headers.add("Content-Type", "application/json");
-//        RestTemplate restTemplate = new RestTemplate();
-//        HttpEntity<Publisher> requestBody = new HttpEntity<>(publisher, headers);
-//        String URL_CREATE_EMPLOYEE="https://api-book-shop-online.herokuapp.com/api/publishers";
-//        ResponseEntity<Publisher> response = restTemplate.exchange(URL_CREATE_EMPLOYEE, HttpMethod.POST, requestBody, Publisher.class);
-//        if (response != null) {
-//            return true;
-//        }
-//        return false;
-//    }
+
+    public int getTotalPage(){
+        String URI = ROOT_URI + "/books/index/pages";
+        ResponseEntity response = restTemplate.getForEntity(URI, String.class);
+        System.out.println("response: "+ response.toString());
+        int page=1;
+        try{
+            page=Integer.parseInt((String) response.getBody());
+            return page;
+        }catch (Exception e){
+            return 1;
+        }
+    }
+    public boolean addBook(Book book) {
+        String URL_CREATE_EMPLOYEE="https://api-book-shop-online.herokuapp.com/api/books";
+        MultiValueMap<String, Object> formData = new LinkedMultiValueMap<String, Object>();
+        RestTemplate restTemplate = new RestTemplate();
+        formData.add("booksEntity",book);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+        headers.add("Content-Type", "application/x-www-form-urlencoded");
+        HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(formData, headers);
+        try{
+            ResponseEntity<String> response = restTemplate.exchange(URL_CREATE_EMPLOYEE,
+                    HttpMethod.POST, requestEntity, String.class);
+            System.out.println("response status: " + response.getStatusCode());
+            System.out.println("response body: " + response.getBody());
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 
     public Book getById(int id) {
         String URI = ROOT_URI + "books/" + id;
@@ -44,16 +66,16 @@ public class BookSerrviceImpl {
         return response.getBody();
     }
 
-//    public boolean deleteObject(int id) {
-//        String URI = ROOT_URI + "publishers/" + id;
-//        restTemplate.delete(URI);
-//        try {
-//            Publisher e = getById(id);
-//            return false;
-//        }catch (Exception e){
-//            return true;
-//        }
-//    }
+    public boolean deleteObject(int id) {
+        String URI = ROOT_URI + "books/" + id;
+        restTemplate.delete(URI);
+        try {
+            Book e = getById(id);
+            return false;
+        }catch (Exception e){
+            return true;
+        }
+    }
 //    public boolean updatePublisher(Publisher publisher) {
 //        HttpClient httpClient = HttpClientBuilder.create().build();
 //        restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory(httpClient));

@@ -1,6 +1,7 @@
 package com.ecommerce.bookshoponlie.services;
 
 import com.ecommerce.bookshoponlie.models.Category;
+import com.ecommerce.bookshoponlie.models.Language;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,5 +85,11 @@ public class CategoriesServiceImpl{
         }catch (Exception e){
             return 1;
         }
+    }
+
+    public List<Category> getAllCategoryAll() {
+        String URI = "https://api-book-shop-online.herokuapp.com/api/categories/index";
+        ResponseEntity<Category[]> response = restTemplate.getForEntity(URI,Category[].class);
+        return Arrays.asList(response.getBody());
     }
 }

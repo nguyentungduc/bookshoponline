@@ -81,7 +81,7 @@
 	</definition>
 
 	<definition name="admin.dashboard" extends="admin.template">
-		<put-attribute name="body" value="/WEB-INF/jsp/admin/dashboard/add.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/dashboard/index.jsp" />
 	</definition>
 	<!--END ADMIN TEMPLATE -->
 	<!-- ///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->

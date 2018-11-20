@@ -1,7 +1,7 @@
 package com.ecommerce.bookshoponlie.controllers;
 
 import com.ecommerce.bookshoponlie.models.Supplier;
-import com.ecommerce.bookshoponlie.services.SupplierServiceImpl;
+import com.ecommerce.bookshoponlie.services.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,55 +15,22 @@ import java.util.List;
 @Controller
 @RequestMapping("/admincp")
 public class DashboardAdminController {
-    SupplierServiceImpl supplierService = new SupplierServiceImpl();
+    PublisherSerrviceImpl publisherService = new PublisherSerrviceImpl();
+    UserServiceImpl userService = new UserServiceImpl();
+    BookSerrviceImpl bookService = new BookSerrviceImpl();
+    LanguageSerrviceImpl languageService = new LanguageSerrviceImpl();
+
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String index(ModelMap modelMap) {
-//        List<Supplier> suppliers = supplierService.getAllSupplier(1);
-//        modelMap.addAttribute("suppliers",suppliers);
+        int totalUser = userService.getAllUser(1).size();
+        int totalBook = bookService.getAllBook(1).size();
+        int totalLanguage = languageService.getAllPublisher(1).size();
+        int totalPublisher = publisherService.getAllPublisher(1).size();
+        modelMap.addAttribute("totalUser",totalUser);
+        modelMap.addAttribute("totalBook",totalBook);
+        modelMap.addAttribute("totalLanguage",totalLanguage);
+        modelMap.addAttribute("totalPublisher",totalPublisher);
         return "admin.dashboard";
     }
-//    @RequestMapping(value = "supplier/add", method = RequestMethod.GET, produces="application/json")
-//    public String show() {
-//        return "admin.supplier.add";
-//    }
-//
-//    @RequestMapping(value ="supplier/add", method = RequestMethod.POST, produces="application/json")
-//    public String add(@ModelAttribute("supplier") Supplier supplier,RedirectAttributes ra) {
-//        supplier.setId(0);
-//        if(supplierService.addSupplier(supplier)) {
-//            ra.addFlashAttribute("msg", "Thêm thành công !");
-//        }else{
-//            ra.addFlashAttribute("msg", "Thêm thất bại !");
-//        }
-//        return "redirect:/admincp/supplier";
-//    }
-//
-//    @RequestMapping(value = "supplier/delete/{id}", method = RequestMethod.GET, produces="application/json")
-//    public String delete(RedirectAttributes ra, @PathVariable("id") int id) {
-//        System.out.println("ID: "+id);
-//        if(supplierService.deleteSupplier(id)){
-//            ra.addFlashAttribute("msg", "Xóa thành công !");
-//        }else{
-//            ra.addFlashAttribute("msg", "Xóa thành công !");
-//        }
-//        return "redirect:/admincp/supplier";
-//    }
-//    @RequestMapping(value = "supplier/{id}", method = RequestMethod.GET, produces="application/json")
-//    public String edit(ModelMap modelMap, @PathVariable("id") int id) {
-//        Supplier supplier = supplierService.getById(id);
-//        modelMap.addAttribute("supplier",supplier);
-//        return "admin.supplier.edit";
-//    }
-//    @RequestMapping(value = "supplier/edit", method = RequestMethod.POST, produces="application/json")
-//    public String edit(@ModelAttribute("supplier") Supplier supplier, ModelMap modelMap, RedirectAttributes ra) {
-//        try {
-//            supplierService.updateSupplier(supplier);
-//            ra.addFlashAttribute("msg", "Sửa thành công !");
-//        }catch (Exception e){
-//            ra.addFlashAttribute("msg", "Sửa thất bại !");
-//            e.printStackTrace();
-//        }
-//        return "redirect:/admincp/supplier";
-//    }
 }
