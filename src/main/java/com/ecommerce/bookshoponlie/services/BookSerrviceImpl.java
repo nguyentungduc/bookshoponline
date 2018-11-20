@@ -1,16 +1,22 @@
 package com.ecommerce.bookshoponlie.services;
 
+import com.ecommerce.bookshoponlie.config.MultipartInputStreamFileResource;
 import com.ecommerce.bookshoponlie.models.*;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.*;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -38,11 +44,27 @@ public class BookSerrviceImpl {
             return 1;
         }
     }
-    public boolean addBook(Book book) {
+    public boolean addBook(Book book,MultipartFile files,MultipartFile file) {
+
+
         String URL_CREATE_EMPLOYEE="https://api-book-shop-online.herokuapp.com/api/books";
         MultiValueMap<String, Object> formData = new LinkedMultiValueMap<String, Object>();
         RestTemplate restTemplate = new RestTemplate();
+        restTemplate.getMessageConverters().add(new ByteArrayHttpMessageConverter());
         formData.add("booksEntity",book);
+        if (!file.isEmpty()) {
+            try {
+                ByteArrayResource fileAsResource = new ByteArrayResource(file.getBytes()) {
+                    @Override
+                    public String getFilename() {
+                        return file.getOriginalFilename();
+                    }
+                };
+                formData.add("fileCover",file);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
         headers.add("Content-Type", "application/x-www-form-urlencoded");

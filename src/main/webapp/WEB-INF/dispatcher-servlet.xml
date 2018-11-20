@@ -10,8 +10,6 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
         ">
-	<mvc:annotation-driven />
-	<context:component-scan base-package="config,dao" />
 
 	<bean id="tilesConfigurer"
 		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
@@ -27,10 +25,6 @@
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.tiles3.TilesView" />
 	</bean>
-
-	<bean class="config.restTemplate"></bean>
-	<bean class="util.StringUtil"></bean>
-	<bean class="util.RenameFileLibrary"></bean>
 
 	<!-- upload file -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

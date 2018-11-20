@@ -131,6 +131,12 @@
                                                 <input type="file" name="files" multiple class="btn-default">
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Image Cover</label>
+                                            <div class="col-md-12 fileupload-exists">
+                                                <input type="file" name="file" class="btn-default">
+                                            </div>
+                                        </div>
                                         <input type="submit" class="btn btn-primary icon-save" value="Update">
                                     </div>
                                 </form>
