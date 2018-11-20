@@ -7,6 +7,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.*;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
@@ -17,6 +18,8 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -44,15 +47,35 @@ public class BookSerrviceImpl {
             return 1;
         }
     }
-    public boolean addBook(Book book,MultipartFile files,MultipartFile file) {
+    public boolean addBook(Book book , MultipartFile[] files, MultipartFile file) {
+        try{
+            String URL_CREATE_EMPLOYEE="https://api-book-shop-online.herokuapp.com/api/books";
+            MultiValueMap<String, Object> formData = new LinkedMultiValueMap<String, Object>();
+            RestTemplate restTemplate = new RestTemplate();
+            restTemplate.getMessageConverters().add(new ByteArrayHttpMessageConverter());
+            formData.add("booksEntity", book);
+            saveFileToMap(file, formData, "fileCover");
+            if(files != null && files.length > 0) {
+                for(MultipartFile obj : files) {
+                    saveFileToMap(obj, formData, "files");
+                }
+            }
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+            headers.add("Content-Type", "application/x-www-form-urlencoded");
+            HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(formData, headers);
+            ResponseEntity<String> response = restTemplate.exchange(URL_CREATE_EMPLOYEE,
+                    HttpMethod.POST, requestEntity, String.class);
+            return true;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
 
-
-        String URL_CREATE_EMPLOYEE="https://api-book-shop-online.herokuapp.com/api/books";
-        MultiValueMap<String, Object> formData = new LinkedMultiValueMap<String, Object>();
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.getMessageConverters().add(new ByteArrayHttpMessageConverter());
-        formData.add("booksEntity",book);
-        if (!file.isEmpty()) {
+    private void saveFileToMap(MultipartFile file, MultiValueMap<String, Object> formData, String nameAdd) {
+        if(file != null) {
             try {
                 ByteArrayResource fileAsResource = new ByteArrayResource(file.getBytes()) {
                     @Override
@@ -60,24 +83,10 @@ public class BookSerrviceImpl {
                         return file.getOriginalFilename();
                     }
                 };
-                formData.add("fileCover",file);
+                formData.add(nameAdd, fileAsResource);
             } catch (Exception e) {
-                e.printStackTrace();
+                System.out.println(e.getMessage());
             }
-        }
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-        headers.add("Content-Type", "application/x-www-form-urlencoded");
-        HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(formData, headers);
-        try{
-            ResponseEntity<String> response = restTemplate.exchange(URL_CREATE_EMPLOYEE,
-                    HttpMethod.POST, requestEntity, String.class);
-            System.out.println("response status: " + response.getStatusCode());
-            System.out.println("response body: " + response.getBody());
-            return true;
-        }catch (Exception e){
-            e.printStackTrace();
-            return false;
         }
     }
 
