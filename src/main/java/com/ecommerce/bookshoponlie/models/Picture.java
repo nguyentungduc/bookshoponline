@@ -11,6 +11,17 @@ public class Picture {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return "Picture{" +
+                "id=" + id +
+                ", url='" + url + '\'' +
+                ", dateCreate='" + dateCreate + '\'' +
+                ", dateUpdate='" + dateUpdate + '\'' +
+                ", type=" + type +
+                '}';
+    }
+
     public void setUrl(String url) {
         this.url = url;
     }
@@ -56,5 +67,8 @@ public class Picture {
     }
 
     public Picture() {
+    }
+    public Picture(Integer id) {
+        this.id = id;
     }
 }

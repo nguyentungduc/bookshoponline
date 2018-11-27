@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -45,7 +46,14 @@ public class CategoryAdminController {
     }
 
     @RequestMapping(value = "category/add", method = RequestMethod.POST, produces="application/json")
-    public String add(@ModelAttribute("objCategory") Category objCategory,RedirectAttributes ra) {
+    public String add(@ModelAttribute("objCategory") Category objCategory,RedirectAttributes ra,ModelMap modelMap) {
+        List<Category> listCat = objCategoriesService.getAllCategoryAll();
+        for (Category category:listCat) {
+            if(category.getName().equals(objCategory.getName())){
+                modelMap.addAttribute("nameCat",objCategory.getName());
+                return "admin.category.add";
+            }
+        }
         if(objCategoriesService.addObject(objCategory)) {
             ra.addFlashAttribute("msg", "Thêm thành công !");
         }else{
@@ -63,6 +71,13 @@ public class CategoryAdminController {
 
     @RequestMapping(value = "category/edit", method = RequestMethod.POST, produces="application/json")
     public String edit(@ModelAttribute("objCategory") Category objCategory, ModelMap modelMap, RedirectAttributes ra) {
+        List<Category> listCat = objCategoriesService.getAllCategoryAll();
+        for (Category category:listCat) {
+            if(category.getName().equals(objCategory.getName())&&(category.getId()!=objCategory.getId())){
+                modelMap.addAttribute("nameCat",objCategory.getName());
+                return "admin.category.edit";
+            }
+        }
         try {
             objCategoriesService.updateObject(objCategory);
             ra.addFlashAttribute("msg", "Sửa thành công !");

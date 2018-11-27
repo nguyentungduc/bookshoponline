@@ -69,7 +69,7 @@
         <script src="${pageContext.request.contextPath}/templates/admin/plugins/datatables/dataTables.colVis.js"></script>
         <script src="${pageContext.request.contextPath}/templates/admin/plugins/datatables/dataTables.fixedColumns.min.js"></script>
         <!-- Init js -->
-         <script src="${pageContext.request.contextPath}/templates/admin/assets/pages/jquery.form-pickers.init.js"></script>
+        <script src="${pageContext.request.contextPath}/templates/admin/assets/pages/jquery.form-pickers.init.js"></script>
       <script src="${pageContext.request.contextPath}/templates/admin/plugins/moment/moment.js"></script>
       <script src="${pageContext.request.contextPath}/templates/admin/plugins/timepicker/bootstrap-timepicker.js"></script>
       <script src="${pageContext.request.contextPath}/templates/admin/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
@@ -85,9 +85,18 @@
     
     	<!-- clediter-ckfiter -->
 		<script type="text/javascript" src="${pageContext.request.contextPath}/lib/ckeditor/ckeditor.js"></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/lib/ckfinder/ckfinder.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/lib/ckfinder/ckfinder.js"></script>
 	<!-- end -->
-	 <script src="${pageContext.request.contextPath}/templates/admin/plugins/test.js"></script>
+    <script src="${pageContext.request.contextPath}/templates/admin/plugins/test.js"></script>
+    <script src="${pageContext.request.contextPath}/templates/admin/assets/js/jquery-validate.js"></script>
+    <style type="text/css">
+        label.error {
+            margin-top: 5px;
+            display: inline-block;
+            color: red;
+            font-size: 16px;
+        }
+    </style>
     </head>
     <body>
 

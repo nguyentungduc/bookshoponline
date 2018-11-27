@@ -55,15 +55,11 @@
                                 </c:forEach>
                                 </tbody>
                             </table>
-                            <%--<div class="col-md-4 pull-right">--%>
-                                <%--<div id="page-selection"></div>--%>
-                                <%--<input type="hidden" value="${totalPage}" id="totalPage">--%>
-                            <%--</div>--%>
                         </div>
                 </div> <!-- container -->
             </div> <!-- content -->
         <footer class="footer text-right">
-            2016 - 2017 © Nguyễn Tùng Đức. - mystore.com
+            2018 - 2019 © NCNPM. - mystore.com
         </footer>
     </div>
 </div>

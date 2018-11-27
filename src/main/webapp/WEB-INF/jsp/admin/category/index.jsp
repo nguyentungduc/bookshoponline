@@ -37,7 +37,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th width="10%">Action</th>
+                                    <th width="10%" class="no-sort">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody id="output">

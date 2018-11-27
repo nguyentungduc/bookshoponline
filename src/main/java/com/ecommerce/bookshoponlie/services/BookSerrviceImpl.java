@@ -30,34 +30,77 @@ public class BookSerrviceImpl {
     RestTemplate restTemplate = new RestTemplate();
 
     public List<Book> getAllBook(int page) {
-        String URI = ROOT_URI+"books/index?page="+page;
-        ResponseEntity<Book[]> response = restTemplate.getForEntity(URI,Book[].class);
+        String URI = ROOT_URI + "books/index?page=" + page;
+        ResponseEntity<Book[]> response = restTemplate.getForEntity(URI, Book[].class);
         return Arrays.asList(response.getBody());
     }
 
-    public int getTotalPage(){
+    public int getTotalPage() {
         String URI = ROOT_URI + "/books/index/pages";
         ResponseEntity response = restTemplate.getForEntity(URI, String.class);
-        System.out.println("response: "+ response.toString());
-        int page=1;
-        try{
-            page=Integer.parseInt((String) response.getBody());
+        System.out.println("response: " + response.toString());
+        int page = 1;
+        try {
+            page = Integer.parseInt((String) response.getBody());
             return page;
-        }catch (Exception e){
+        } catch (Exception e) {
             return 1;
         }
     }
-    public boolean addBook(Book book , MultipartFile[] files, MultipartFile file) {
-        try{
-            String URL_CREATE_EMPLOYEE="https://api-book-shop-online.herokuapp.com/api/books";
+
+    public boolean updateBook(Book book, MultipartFile[] files, MultipartFile file, Picture picture, List<Picture> listPic) {
+        try {
+            String URL_CREATE_EMPLOYEE = "https://api-book-shop-online.herokuapp.com/api/books/" + book.getId();
+            MultiValueMap<String, Object> formData = new LinkedMultiValueMap<String, Object>();
+            RestTemplate restTemplate = new RestTemplate();
+            restTemplate.getMessageConverters().add(new ByteArrayHttpMessageConverter());
+            HttpClient httpClient = HttpClientBuilder.create().build();
+            restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory(httpClient));
+            formData.add("booksEntity", book);
+            if (file != null && file.getSize() > 0) {
+                System.out.println("vo day nay................................................");
+                saveFileToMap(file, formData, "fileCover");
+            } else {
+                listPic.add(picture);
+            }
+            book.setPictures(listPic);
+            if (files != null && files.length > 0) {
+                for (MultipartFile obj : files) {
+                    if (obj != null && obj.getSize() > 0) {
+                        saveFileToMap(obj, formData, "files");
+                    }
+                }
+            }
+            List<MediaType> acceptTypes = new ArrayList<>();
+            acceptTypes.add(MediaType.APPLICATION_JSON_UTF8);
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+            headers.setAccept(acceptTypes);
+            headers.add("Content-Type", "application/x-www-form-urlencoded");
+            HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(formData, headers);
+            ResponseEntity<String> response = restTemplate.exchange(URL_CREATE_EMPLOYEE,
+                    HttpMethod.PATCH, requestEntity, String.class);
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean addBook(Book book, MultipartFile[] files, MultipartFile file) {
+        try {
+            String URL_CREATE_EMPLOYEE = "https://api-book-shop-online.herokuapp.com/api/books";
             MultiValueMap<String, Object> formData = new LinkedMultiValueMap<String, Object>();
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.getMessageConverters().add(new ByteArrayHttpMessageConverter());
             formData.add("booksEntity", book);
             saveFileToMap(file, formData, "fileCover");
-            if(files != null && files.length > 0) {
-                for(MultipartFile obj : files) {
-                    saveFileToMap(obj, formData, "files");
+            if (files != null && files.length > 0) {
+                for (MultipartFile obj : files) {
+                    if (obj != null && obj.getSize() > 0) {
+                        saveFileToMap(obj, formData, "files");
+                    }
                 }
             }
             HttpHeaders headers = new HttpHeaders();
@@ -67,7 +110,7 @@ public class BookSerrviceImpl {
             ResponseEntity<String> response = restTemplate.exchange(URL_CREATE_EMPLOYEE,
                     HttpMethod.POST, requestEntity, String.class);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
             return false;
@@ -75,7 +118,7 @@ public class BookSerrviceImpl {
     }
 
     private void saveFileToMap(MultipartFile file, MultiValueMap<String, Object> formData, String nameAdd) {
-        if(file != null) {
+        if (file != null) {
             try {
                 ByteArrayResource fileAsResource = new ByteArrayResource(file.getBytes()) {
                     @Override
@@ -103,7 +146,7 @@ public class BookSerrviceImpl {
         try {
             Book e = getById(id);
             return false;
-        }catch (Exception e){
+        } catch (Exception e) {
             return true;
         }
     }

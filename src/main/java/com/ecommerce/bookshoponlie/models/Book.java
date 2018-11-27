@@ -17,30 +17,20 @@ public class Book {
     private BookDetail bookDetail;
     private Publisher publisher;
     private List<Category> categories;
+    private List<Picture> pictures;
+
+    public void setPictures(List<Picture> pictures) {
+        this.pictures = pictures;
+    }
+
+    public List<Picture> getPictures() {
+        return pictures;
+    }
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", edition=" + edition +
-                ", price=" + price +
-                ", priceSale=" + priceSale +
-                ", enable=" + enable +
-                ", summary='" + summary + '\'' +
-                ", currency='" + currency + '\'' +
-                ", quantity=" + quantity +
-                ", author='" + author + '\'' +
-                ", codeBook='" + codeBook + '\'' +
-                ", bookDetail=" + bookDetail +
-                ", publisher=" + publisher +
-                ", categories=" + categories +
-                '}';
-    }
 
     public void setName(String name) {
         this.name = name;
@@ -150,7 +140,7 @@ public class Book {
         return categories;
     }
 
-    public Book(Integer id, String name, Integer edition, Double price, Double priceSale, Integer enable, String summary, String currency, Integer quantity, String author, String codeBook, BookDetail bookDetail, Publisher publisher, List<Category> categories) {
+    public Book(Integer id, String name, Integer edition, Double price, Double priceSale, Integer enable, String summary, String currency, Integer quantity, String author, String codeBook, BookDetail bookDetail, Publisher publisher, List<Category> categories, List<Picture> pictures) {
         this.id = id;
         this.name = name;
         this.edition = edition;
@@ -165,6 +155,7 @@ public class Book {
         this.bookDetail = bookDetail;
         this.publisher = publisher;
         this.categories = categories;
+        this.pictures = pictures;
     }
 
     public Book() {

@@ -30,14 +30,17 @@
                     <div class="card-box">
                         <div class="row">
                             <div class="col-md-12">
-                                <form enctype="multipart/form-data" action="${pageContext.request.contextPath}/admincp/category/add" method="post" >
+                                <form id="addCat" enctype="multipart/form-data" action="${pageContext.request.contextPath}/admincp/category/add" method="post" >
                                     <div class="card-box">
                                         <h4 class="m-t-0 header-title"><b>Category</b></h4>
                                         <div class="form-group">
                                             <label for="name">Name</label>
-                                            <input type="name" class="form-control" id="name" name="name" placeholder="Enter Name">
+                                            <input type="name" class="form-control" id="name" value="${nameCat}" name="name" placeholder="Enter Name">
+                                            <c:if test="${nameCat != null}">
+                                            <label id="name-error" class="error" for="name">This name is exist.</label>
+                                            </c:if>
                                         </div>
-                                        <input type="submit" class="btn btn-primary icon-save" value="Submit">
+                                        <input type="submit" class="btn btn-primary icon-save" value="Add">
                                     </div>
                                 </form>
                             </div>
@@ -54,3 +57,16 @@
     </footer>
 
 </div>
+<script>
+    $( document ).ready( function () {
+        $( "#addCat" ).validate( {
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 5,
+                    maxlength: 100,
+                },
+            },
+        });
+    });
+</script>

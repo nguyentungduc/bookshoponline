@@ -37,7 +37,6 @@
                                             <label for="name">Name</label>
                                             <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" value="">
                                         </div>
-
                                         <div  class="form-group">
                                             <h6>Status</h6>
                                             <select name="enable" class="form-control">
@@ -63,7 +62,7 @@
                                         </div>
                                         <div  class="form-group">
                                             <h6>Category</h6>
-                                            <select name="category_id" class="form-control">
+                                            <select name="category_id[]" class="form-control" multiple="multiple">
                                                 <c:forEach var="category" items="${categoryNames}">
                                                     <option value="${category.id}">${category.name}</option>
                                                 </c:forEach>
@@ -101,7 +100,7 @@
                                         <div class="form-group">
                                             <label class="control-label">Summary</label>
                                             <div class="col-md-12">
-                                                <textarea class="form-control" rows="5" name="summary"></textarea>
+                                                <textarea class="form-control" rows="5" name="summary" id="editor"></textarea>
                                             </div>
                                         </div>
                                         <h4 class="header-title"><b>Detail Book</b></h4>
@@ -153,3 +152,7 @@
         2016 - 2017 © Codefox. - Coderthemes.com
     </footer>
 </div>
+<script>
+    var editor = CKEDITOR.replace('editor');
+    CKFinder.setupCKEditor(editor, '${pageContext.request.contextPath}/lib/ckfinder/');
+</script>
