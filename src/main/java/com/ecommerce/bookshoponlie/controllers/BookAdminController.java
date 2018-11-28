@@ -63,7 +63,6 @@ public class BookAdminController {
                        @RequestParam(value = "pid[]", required = false) Integer[] pid,
                        @RequestParam(value = "file", required = false) MultipartFile file,
                        RedirectAttributes ra) {
-        System.out.println("file nay bang null:" + file);
         List<Category> listCat = new ArrayList<Category>();
         if (category_id != null && category_id.length > 0) {
             for (int i = 0; i < category_id.length; i++) {
@@ -121,7 +120,18 @@ public class BookAdminController {
                       @RequestParam("publisher_id") Integer publisher_id,
                       @ModelAttribute("book") Book book,
                       @ModelAttribute("detail") BookDetail detail,
-                      RedirectAttributes ra) {
+                      RedirectAttributes ra,
+                      ModelMap modelMap) {
+        List<Book> listBookByCode = bookSerrvice.getByCodeBook(book.getCodeBook());
+        if(listBookByCode!=null && listBookByCode.size()>0){
+            for (Book obj: listBookByCode) {
+                if(obj.getCodeBook()==book.getCodeBook()){
+                    modelMap.addAttribute("error","error");
+                    return "admin.book.add";
+                }
+            }
+        }
+
         List<Category> list = new ArrayList<Category>();
         for (int i = 0; i < category_id.length; i++) {
             Integer ic_cat = Integer.parseInt(category_id[i]);

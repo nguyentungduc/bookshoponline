@@ -30,7 +30,7 @@
                     <div class="card-box">
                         <div class="row">
                             <div class="col-md-12">
-                                <form enctype="multipart/form-data" action="${pageContext.request.contextPath}/admincp/user/edit" method="post" >
+                                <form id="editUser" enctype="multipart/form-data" action="${pageContext.request.contextPath}/admincp/user/edit" method="post" >
                                     <div class="card-box">
                                         <h4 class="m-t-0 header-title"><b>User</b></h4>
                                         <div class="form-group">
@@ -56,3 +56,16 @@
     </footer>
 
 </div>
+<script>
+    $( document ).ready( function () {
+        $( "#editUser" ).validate( {
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 5,
+                    maxlength: 100,
+                },
+            },
+        });
+    });
+</script>

@@ -66,10 +66,6 @@
                                 </c:forEach>
                                 </tbody>
                             </table>
-                            <div class="col-md-4 pull-right">
-                                <div id="page-selection"></div>
-                                <input type="hidden" value="${totalPage}" id="totalPage">
-                            </div>
                         </div>
                 </div> <!-- container -->
             </div> <!-- content -->

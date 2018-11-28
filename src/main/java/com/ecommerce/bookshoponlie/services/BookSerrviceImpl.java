@@ -140,6 +140,14 @@ public class BookSerrviceImpl {
         return response.getBody();
     }
 
+    public List<Book> getByCodeBook(String codeBook){
+        List<Book> list = new ArrayList<>();
+        String URI = ROOT_URI + "books/" + codeBook;
+        System.out.println("URL: " + URI);
+        ResponseEntity<Book> response = restTemplate.getForEntity(URI, Book.class);
+        return Arrays.asList(response.getBody());
+    }
+
     public boolean deleteObject(int id) {
         String URI = ROOT_URI + "books/" + id;
         restTemplate.delete(URI);
