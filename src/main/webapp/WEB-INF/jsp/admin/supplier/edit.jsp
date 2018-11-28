@@ -30,29 +30,36 @@
                     <div class="card-box">
                         <div class="row">
                             <div class="col-md-12">
-                                <form enctype="multipart/form-data" action="${pageContext.request.contextPath}/admincp/supplier/edit" method="post" >
+                                <form id="editSupplier" enctype="multipart/form-data" action="${pageContext.request.contextPath}/admincp/supplier/edit" method="post" >
                                     <div class="card-box">
                                         <h4 class="m-t-0 header-title"><b>Supplier</b></h4>
-                                        <div class="form-group">
-                                            <label for="name">Name</label>
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" value="${supplier.name}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="phone">Phone</label>
-                                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" value="${supplier.phone}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="phone">representative</label>
-                                            <input type="text" class="form-control" id="representative" name="representative" placeholder="Phone" value="${supplier.phone}">
+                                        <div class="row">
+                                            <div class="form-group col-md-4">
+                                                <label for="name">Name</label>
+                                                <input type="name" class="form-control" id="name" name="name" placeholder="Enter Name"  value="${supplier.name}">
+                                                <c:if test="${error != null}">
+                                                    <label id="name-error" class="error" for="name">This name is exist.</label>
+                                                </c:if>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="phone">Phone</label>
+                                                <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" value="${supplier.phone}">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="phone">Representative</label>
+                                                <input value="${supplier.representative}" type="text" class="form-control" id="representative" name="representative" placeholder="Representative">
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-2 control-label">Address</label>
-                                            <div class="col-md-10">
-                                                <textarea class="form-control" rows="5" name="address">${supplier.representative}</textarea>
+                                            <div class="col-md-12" style="padding:0px;margin-bottom: 20px;">
+                                                <textarea id="editor" class="form-control" rows="5" name="address">${supplier.address}</textarea>
                                             </div>
                                         </div>
-                                        <input type="hidden" name="id"  value="${supplier.id}">
-                                        <input type="submit" class="btn btn-primary icon-save" value="Update">
+                                        <div class="form-group">
+                                            <input type="hidden" name="id"  value="${supplier.id}">
+                                            <input type="submit" class="btn btn-primary icon-save" value="Edit">
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -67,5 +74,39 @@
     <footer class="footer text-right">
         2016 - 2017 © Codefox. - Coderthemes.com
     </footer>
-
 </div>
+<script type="text/javascript">
+    var editor = CKEDITOR.replace('editor');
+    CKFinder.setupCKEditor(editor, '${pageContext.request.contextPath}/lib/ckfinder/');
+</script>
+<script>
+    $( document ).ready( function () {
+        $( "#editSupplier" ).validate( {
+            ignore: [],
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 5,
+                    maxlength: 100,
+                },
+                phone: {
+                    required: true,
+                    minlength: 5,
+                    maxlength: 20,
+                },
+                representative: {
+                    required: true,
+                    minlength: 5,
+                    maxlength: 20,
+                },
+                address: {
+                    required: function(textarea) {
+                        CKEDITOR.instances[textarea.id].updateElement(); // update textarea
+                        var editorcontent = textarea.value.replace(/<[^>]*>/gi, ''); // strip tags
+                        return editorcontent.length === 0;
+                    },
+                },
+            },
+        });
+    });
+</script>

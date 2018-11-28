@@ -32,8 +32,15 @@ public class SupplierAdminController {
     }
 
     @RequestMapping(value ="supplier/add", method = RequestMethod.POST, produces="application/json")
-    public String add(@ModelAttribute("supplier") Supplier supplier,RedirectAttributes ra) {
+    public String add(@ModelAttribute("supplier") Supplier supplier,RedirectAttributes ra,ModelMap modelMap) {
         supplier.setId(0);
+        List<Supplier> listSupplier = supplierService.getAllSupplier(1);
+        for (Supplier obj:listSupplier) {
+            if(obj.getName().equals(supplier.getName())){
+                modelMap.addAttribute("obj",supplier);
+                return "admin.supplier.add";
+            }
+        }
         if(supplierService.addSupplier(supplier)) {
             ra.addFlashAttribute("msg", "Thêm thành công !");
         }else{
@@ -60,6 +67,13 @@ public class SupplierAdminController {
     }
     @RequestMapping(value = "supplier/edit", method = RequestMethod.POST, produces="application/json")
     public String edit(@ModelAttribute("supplier") Supplier supplier, ModelMap modelMap, RedirectAttributes ra) {
+        List<Supplier> listSupplier = supplierService.getAllSupplier(1);
+        for (Supplier obj:listSupplier) {
+            if(obj.getName().equals(supplier.getName())&&(obj.getId()!=supplier.getId())){
+                modelMap.addAttribute("error","error");
+                return "admin.supplier.edit";
+            }
+        }
         try {
             supplierService.updateSupplier(supplier);
             ra.addFlashAttribute("msg", "Sửa thành công !");

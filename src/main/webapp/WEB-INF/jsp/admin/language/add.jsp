@@ -24,20 +24,22 @@
                 </div>
             </div>
             <!-- end row -->
-
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card-box">
                         <div class="row">
                             <div class="col-md-12">
-                                <form enctype="multipart/form-data" action="${pageContext.request.contextPath}/admincp/language/add" method="post" >
+                                <form id="addLang" enctype="multipart/form-data" action="${pageContext.request.contextPath}/admincp/language/add" method="post" >
                                     <div class="card-box">
                                         <h4 class="m-t-0 header-title"><b>Language</b></h4>
                                         <div class="form-group">
                                             <label for="name">Name</label>
-                                            <input type="name" class="form-control" id="name" name="name" placeholder="Enter Name">
+                                            <input type="name" class="form-control" id="name" name="name" value="${nameLang}" placeholder="Enter Name">
+                                            <c:if test="${nameLang != null}">
+                                                <label id="name-error" class="error" for="name">This name is exist.</label>
+                                            </c:if>
                                         </div>
-                                        <input type="submit" class="btn btn-primary icon-save" value="Submit">
+                                        <input type="submit" class="btn btn-primary icon-save" value="Add">
                                     </div>
                                 </form>
                             </div>
@@ -48,9 +50,20 @@
             <!-- end row -->
         </div> <!-- container -->
     </div> <!-- content -->
-
     <footer class="footer text-right">
-        2016 - 2017 © Codefox. - Coderthemes.com
+        2018 - 2019 © CNPM. - BookStore.com
     </footer>
-
 </div>
+<script>
+    $( document ).ready( function () {
+        $( "#addLang" ).validate( {
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 5,
+                    maxlength: 100,
+                },
+            },
+        });
+    });
+</script>

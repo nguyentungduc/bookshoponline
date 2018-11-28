@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -31,8 +32,15 @@ public class PublisherAdminController {
     }
 
     @RequestMapping(value ="publisher/add", method = RequestMethod.POST, produces="application/json")
-    public String add(@ModelAttribute("publisher") Publisher publisher,RedirectAttributes ra) {
+    public String add(@ModelAttribute("publisher") Publisher publisher,RedirectAttributes ra,ModelMap modelMap) {
         publisher.setId(0);
+        List<Publisher> listPublisher =  objPublisherSerrvice.getAllPublisher(1);
+        for (Publisher obj:listPublisher) {
+            if(obj.getName().equals(publisher.getName())){
+                modelMap.addAttribute("obj",obj);
+                return "admin.publisher.add";
+            }
+        }
         if(objPublisherSerrvice.addPublisher(publisher)) {
             ra.addFlashAttribute("msg", "Thêm thành công !");
         }else{
@@ -59,6 +67,13 @@ public class PublisherAdminController {
     }
     @RequestMapping(value = "publisher/edit", method = RequestMethod.POST, produces="application/json")
     public String edit(@ModelAttribute("publisher") Publisher publisher, ModelMap modelMap, RedirectAttributes ra) {
+        List<Publisher> listPublisher =  objPublisherSerrvice.getAllPublisher(1);
+        for (Publisher obj:listPublisher) {
+            if(obj.getName().equals(publisher.getName())&&(publisher.getId()!=obj.getId())){
+                modelMap.addAttribute("error","error");
+                return "admin.publisher.edit";
+            }
+        }
         try {
             objPublisherSerrvice.updatePublisher(publisher);
             ra.addFlashAttribute("msg", "Sửa thành công !");

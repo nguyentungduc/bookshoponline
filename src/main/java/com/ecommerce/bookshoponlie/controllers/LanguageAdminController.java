@@ -1,9 +1,11 @@
 package com.ecommerce.bookshoponlie.controllers;
 
+import com.ecommerce.bookshoponlie.models.Category;
 import com.ecommerce.bookshoponlie.models.Language;
 import com.ecommerce.bookshoponlie.models.Publisher;
 import com.ecommerce.bookshoponlie.services.LanguageSerrviceImpl;
 import com.ecommerce.bookshoponlie.services.PublisherSerrviceImpl;
+import org.apache.commons.codec.language.bm.Lang;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -33,8 +35,14 @@ public class LanguageAdminController {
     }
 
     @RequestMapping(value ="language/add", method = RequestMethod.POST, produces="application/json")
-    public String add(@ModelAttribute("language") Language language,RedirectAttributes ra) {
-        System.out.println("Name: " +language.getName());
+    public String add(@ModelAttribute("language") Language language,RedirectAttributes ra,ModelMap modelMap) {
+        List<Language> listLang = languageSerrvice.getLanguageAll();
+        for (Language obj:listLang) {
+            if(obj.getName().equals(language.getName())){
+                modelMap.addAttribute("nameLang",language.getName());
+                return "admin.language.add";
+            }
+        }
         if(languageSerrvice.addLanguage(language)) {
             ra.addFlashAttribute("msg", "Thêm thành công !");
         }else{
@@ -63,6 +71,13 @@ public class LanguageAdminController {
 
     @RequestMapping(value = "language/edit", method = RequestMethod.POST, produces="application/json")
     public String edit(@ModelAttribute("language") Language language, ModelMap modelMap, RedirectAttributes ra) {
+        List<Language> listLang = languageSerrvice.getLanguageAll();
+        for (Language obj:listLang) {
+            if(obj.getName().equals(language.getName())&&(obj.getId()!=language.getId())){
+                modelMap.addAttribute("nameLang",language.getName());
+                return "admin.language.edit";
+            }
+        }
         try {
             languageSerrvice.updateLanguage(language);
             ra.addFlashAttribute("msg", "Sửa thành công !");
